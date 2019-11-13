@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		330029762369A8C400E1075B /* BusStopCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330029752369A8C400E1075B /* BusStopCellModel.swift */; };
+		33008FBD233CB2FF00EA2234 /* StopSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008FBC233CB2FF00EA2234 /* StopSubscriber.swift */; };
+		331339142359F047008EBAFE /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331339132359F047008EBAFE /* MapsViewController.swift */; };
+		33158A9823797AB500F6B722 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33158A9723797AB500F6B722 /* ViewExtension.swift */; };
+		33165CD2233A473D0005AD40 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33165CD1233A473D0005AD40 /* MapViewModel.swift */; };
+		33165CD4233A67030005AD40 /* BusStopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33165CD3233A67030005AD40 /* BusStopAnnotation.swift */; };
+		3316CE752376CC7400CA1F11 /* BusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3316CE742376CC7400CA1F11 /* BusStopView.swift */; };
+		3316CE77237716BA00CA1F11 /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3316CE76237716BA00CA1F11 /* BusView.swift */; };
+		331815E2232FA4A50082944D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331815E1232FA4A50082944D /* LoadingView.swift */; };
+		331815E4232FA6D50082944D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331815E3232FA6D50082944D /* ErrorView.swift */; };
+		333AC6A6232D141400FB43CA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A5232D141400FB43CA /* Coordinator.swift */; };
+		333AC6A8232D143B00FB43CA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A7232D143B00FB43CA /* Storyboarded.swift */; };
+		333AC6AA232D240600FB43CA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A9232D240600FB43CA /* MainCoordinator.swift */; };
+		334A49F82355ECF500BB0951 /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A49F62355ECF500BB0951 /* StopCell.swift */; };
+		334A49F92355ECF500BB0951 /* StopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334A49F72355ECF500BB0951 /* StopCell.xib */; };
+		334F946D2360944D00DDBC87 /* BusStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334F946C2360944D00DDBC87 /* BusStopCell.swift */; };
+		33621EA2234E492A00E6D4B2 /* DataSourceCompletionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621E9C234E492A00E6D4B2 /* DataSourceCompletionHandler.swift */; };
+		33621EA3234E492A00E6D4B2 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621E9D234E492A00E6D4B2 /* EndPoints.swift */; };
+		33621EA4234E492A00E6D4B2 /* API .swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621E9E234E492A00E6D4B2 /* API .swift */; };
+		33621EA5234E492A00E6D4B2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621E9F234E492A00E6D4B2 /* Model.swift */; };
+		33621EA6234E492A00E6D4B2 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA0234E492A00E6D4B2 /* APIRequest.swift */; };
+		33621EA7234E492A00E6D4B2 /* DataSourceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA1234E492A00E6D4B2 /* DataSourceError.swift */; };
+		33621EAA234E495100E6D4B2 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA8234E495100E6D4B2 /* Coordinate.swift */; };
+		33621EAB234E495100E6D4B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA9234E495100E6D4B2 /* LocationService.swift */; };
+		33621EAE234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33621EAC234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld */; };
+		339990C02333F0C100ACBA92 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339990BF2333F0C100ACBA92 /* MapView.swift */; };
+		33AA04B823296CF900B12819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04B723296CF900B12819 /* AppDelegate.swift */; };
+		33AA04BA23296CF900B12819 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04B923296CF900B12819 /* SceneDelegate.swift */; };
+		33AA04BC23296CF900B12819 /* ContentStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04BB23296CF900B12819 /* ContentStateView.swift */; };
+		33AA04BF23296CF900B12819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04BD23296CF900B12819 /* Main.storyboard */; };
+		33AA04C223296CF900B12819 /* LondonBusTimes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04C023296CF900B12819 /* LondonBusTimes.xcdatamodeld */; };
+		33AA04C423296CF900B12819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C323296CF900B12819 /* Assets.xcassets */; };
+		33AA04C723296CF900B12819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C523296CF900B12819 /* LaunchScreen.storyboard */; };
+		33AA04D223296CF900B12819 /* LondonBusTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */; };
+		33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */; };
+		33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F1232A6FB800B12819 /* LoadingManager.swift */; };
+		33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33AA04CE23296CF900B12819 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33AA04AC23296CF900B12819 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33AA04B323296CF900B12819;
+			remoteInfo = LondonBusTimes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		330029752369A8C400E1075B /* BusStopCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopCellModel.swift; sourceTree = "<group>"; };
+		33008FBC233CB2FF00EA2234 /* StopSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSubscriber.swift; sourceTree = "<group>"; };
+		331339132359F047008EBAFE /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		33158A9723797AB500F6B722 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		33165CD1233A473D0005AD40 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		33165CD3233A67030005AD40 /* BusStopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopAnnotation.swift; sourceTree = "<group>"; };
+		3316CE742376CC7400CA1F11 /* BusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopView.swift; sourceTree = "<group>"; };
+		3316CE76237716BA00CA1F11 /* BusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusView.swift; sourceTree = "<group>"; };
+		331815E1232FA4A50082944D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		331815E3232FA6D50082944D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		333AC6A5232D141400FB43CA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		333AC6A7232D143B00FB43CA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		333AC6A9232D240600FB43CA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		334A49F62355ECF500BB0951 /* StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
+		334A49F72355ECF500BB0951 /* StopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopCell.xib; sourceTree = "<group>"; };
+		334F946C2360944D00DDBC87 /* BusStopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopCell.swift; sourceTree = "<group>"; };
+		33621E9C234E492A00E6D4B2 /* DataSourceCompletionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceCompletionHandler.swift; sourceTree = "<group>"; };
+		33621E9D234E492A00E6D4B2 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		33621E9E234E492A00E6D4B2 /* API .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API .swift"; sourceTree = "<group>"; };
+		33621E9F234E492A00E6D4B2 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		33621EA0234E492A00E6D4B2 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		33621EA1234E492A00E6D4B2 /* DataSourceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceError.swift; sourceTree = "<group>"; };
+		33621EA8234E495100E6D4B2 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		33621EA9234E495100E6D4B2 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		33621EAD234E498100E6D4B2 /* LondonBusesTimes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LondonBusesTimes.xcdatamodel; sourceTree = "<group>"; };
+		339990BF2333F0C100ACBA92 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		33AA04B423296CF900B12819 /* LondonBusTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LondonBusTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33AA04B723296CF900B12819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		33AA04B923296CF900B12819 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		33AA04BB23296CF900B12819 /* ContentStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateView.swift; sourceTree = "<group>"; };
+		33AA04BE23296CF900B12819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		33AA04C123296CF900B12819 /* LondonBusTimes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LondonBusTimes.xcdatamodel; sourceTree = "<group>"; };
+		33AA04C323296CF900B12819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33AA04C623296CF900B12819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		33AA04C823296CF900B12819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33AA04CD23296CF900B12819 /* LondonBusTimesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LondonBusTimesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LondonBusTimesTests.swift; sourceTree = "<group>"; };
+		33AA04D323296CF900B12819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewModel.swift; sourceTree = "<group>"; };
+		33AA04F1232A6FB800B12819 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
+		33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopSubcriber.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33AA04B123296CF900B12819 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33AA04CA23296CF900B12819 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33128FFD2343878100E7C7A3 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				334A49F62355ECF500BB0951 /* StopCell.swift */,
+				334F946C2360944D00DDBC87 /* BusStopCell.swift */,
+				3316CE76237716BA00CA1F11 /* BusView.swift */,
+				3316CE742376CC7400CA1F11 /* BusStopView.swift */,
+				33158A9723797AB500F6B722 /* ViewExtension.swift */,
+				330029752369A8C400E1075B /* BusStopCellModel.swift */,
+				334A49F72355ECF500BB0951 /* StopCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		331815E0232FA3DD0082944D /* ContentStateView */ = {
+			isa = PBXGroup;
+			children = (
+				33128FFD2343878100E7C7A3 /* cell */,
+				33AA04BB23296CF900B12819 /* ContentStateView.swift */,
+				33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */,
+				331815E1232FA4A50082944D /* LoadingView.swift */,
+				331815E3232FA6D50082944D /* ErrorView.swift */,
+				33165CD1233A473D0005AD40 /* MapViewModel.swift */,
+				339990BF2333F0C100ACBA92 /* MapView.swift */,
+				331339132359F047008EBAFE /* MapsViewController.swift */,
+			);
+			path = ContentStateView;
+			sourceTree = "<group>";
+		};
+		333AC6A4232D127100FB43CA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				333AC6A5232D141400FB43CA /* Coordinator.swift */,
+				333AC6A7232D143B00FB43CA /* Storyboarded.swift */,
+				333AC6A9232D240600FB43CA /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		33AA04AB23296CF900B12819 = {
+			isa = PBXGroup;
+			children = (
+				33AA04B623296CF900B12819 /* LondonBusTimes */,
+				33AA04D023296CF900B12819 /* LondonBusTimesTests */,
+				33AA04B523296CF900B12819 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		33AA04B523296CF900B12819 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33AA04B423296CF900B12819 /* LondonBusTimes.app */,
+				33AA04CD23296CF900B12819 /* LondonBusTimesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33AA04B623296CF900B12819 /* LondonBusTimes */ = {
+			isa = PBXGroup;
+			children = (
+				331815E0232FA3DD0082944D /* ContentStateView */,
+				33AA04B723296CF900B12819 /* AppDelegate.swift */,
+				33AA04B923296CF900B12819 /* SceneDelegate.swift */,
+				33AA04F1232A6FB800B12819 /* LoadingManager.swift */,
+				33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */,
+				33008FBC233CB2FF00EA2234 /* StopSubscriber.swift */,
+				33165CD3233A67030005AD40 /* BusStopAnnotation.swift */,
+				33AA04BD23296CF900B12819 /* Main.storyboard */,
+				33AA04C323296CF900B12819 /* Assets.xcassets */,
+				33AA04C523296CF900B12819 /* LaunchScreen.storyboard */,
+				33AA04C823296CF900B12819 /* Info.plist */,
+				33AA04C023296CF900B12819 /* LondonBusTimes.xcdatamodeld */,
+				333AC6A4232D127100FB43CA /* Coordinator */,
+				33AA04EA23297BAD00B12819 /* LocationServices */,
+				33AA04DD23297B7000B12819 /* API */,
+				33AA04DC23296D1E00B12819 /* Persistence */,
+			);
+			path = LondonBusTimes;
+			sourceTree = "<group>";
+		};
+		33AA04D023296CF900B12819 /* LondonBusTimesTests */ = {
+			isa = PBXGroup;
+			children = (
+				33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */,
+				33AA04D323296CF900B12819 /* Info.plist */,
+			);
+			path = LondonBusTimesTests;
+			sourceTree = "<group>";
+		};
+		33AA04DC23296D1E00B12819 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				33621EAC234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		33AA04DD23297B7000B12819 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				33621E9E234E492A00E6D4B2 /* API .swift */,
+				33621EA0234E492A00E6D4B2 /* APIRequest.swift */,
+				33621E9C234E492A00E6D4B2 /* DataSourceCompletionHandler.swift */,
+				33621EA1234E492A00E6D4B2 /* DataSourceError.swift */,
+				33621E9D234E492A00E6D4B2 /* EndPoints.swift */,
+				33621E9F234E492A00E6D4B2 /* Model.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		33AA04EA23297BAD00B12819 /* LocationServices */ = {
+			isa = PBXGroup;
+			children = (
+				33621EA8234E495100E6D4B2 /* Coordinate.swift */,
+				33621EA9234E495100E6D4B2 /* LocationService.swift */,
+			);
+			path = LocationServices;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		33AA04B323296CF900B12819 /* LondonBusTimes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33AA04D623296CF900B12819 /* Build configuration list for PBXNativeTarget "LondonBusTimes" */;
+			buildPhases = (
+				33AA04B023296CF900B12819 /* Sources */,
+				33AA04B123296CF900B12819 /* Frameworks */,
+				33AA04B223296CF900B12819 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LondonBusTimes;
+			productName = LondonBusTimes;
+			productReference = 33AA04B423296CF900B12819 /* LondonBusTimes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33AA04CC23296CF900B12819 /* LondonBusTimesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33AA04D923296CF900B12819 /* Build configuration list for PBXNativeTarget "LondonBusTimesTests" */;
+			buildPhases = (
+				33AA04C923296CF900B12819 /* Sources */,
+				33AA04CA23296CF900B12819 /* Frameworks */,
+				33AA04CB23296CF900B12819 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33AA04CF23296CF900B12819 /* PBXTargetDependency */,
+			);
+			name = LondonBusTimesTests;
+			productName = LondonBusTimesTests;
+			productReference = 33AA04CD23296CF900B12819 /* LondonBusTimesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33AA04AC23296CF900B12819 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = AKA;
+				TargetAttributes = {
+					33AA04B323296CF900B12819 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					33AA04CC23296CF900B12819 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 33AA04B323296CF900B12819;
+					};
+				};
+			};
+			buildConfigurationList = 33AA04AF23296CF900B12819 /* Build configuration list for PBXProject "LondonBusTimes" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 33AA04AB23296CF900B12819;
+			productRefGroup = 33AA04B523296CF900B12819 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33AA04B323296CF900B12819 /* LondonBusTimes */,
+				33AA04CC23296CF900B12819 /* LondonBusTimesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33AA04B223296CF900B12819 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33AA04C723296CF900B12819 /* LaunchScreen.storyboard in Resources */,
+				33AA04C423296CF900B12819 /* Assets.xcassets in Resources */,
+				334A49F92355ECF500BB0951 /* StopCell.xib in Resources */,
+				33AA04BF23296CF900B12819 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33AA04CB23296CF900B12819 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33AA04B023296CF900B12819 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				333AC6A6232D141400FB43CA /* Coordinator.swift in Sources */,
+				33008FBD233CB2FF00EA2234 /* StopSubscriber.swift in Sources */,
+				33165CD2233A473D0005AD40 /* MapViewModel.swift in Sources */,
+				33AA04BC23296CF900B12819 /* ContentStateView.swift in Sources */,
+				33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */,
+				33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */,
+				33158A9823797AB500F6B722 /* ViewExtension.swift in Sources */,
+				33AA04C223296CF900B12819 /* LondonBusTimes.xcdatamodeld in Sources */,
+				333AC6AA232D240600FB43CA /* MainCoordinator.swift in Sources */,
+				334F946D2360944D00DDBC87 /* BusStopCell.swift in Sources */,
+				334A49F82355ECF500BB0951 /* StopCell.swift in Sources */,
+				331339142359F047008EBAFE /* MapsViewController.swift in Sources */,
+				33165CD4233A67030005AD40 /* BusStopAnnotation.swift in Sources */,
+				33621EAE234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld in Sources */,
+				33AA04B823296CF900B12819 /* AppDelegate.swift in Sources */,
+				33621EA3234E492A00E6D4B2 /* EndPoints.swift in Sources */,
+				33621EAA234E495100E6D4B2 /* Coordinate.swift in Sources */,
+				333AC6A8232D143B00FB43CA /* Storyboarded.swift in Sources */,
+				33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */,
+				33621EA5234E492A00E6D4B2 /* Model.swift in Sources */,
+				33621EA2234E492A00E6D4B2 /* DataSourceCompletionHandler.swift in Sources */,
+				331815E4232FA6D50082944D /* ErrorView.swift in Sources */,
+				3316CE77237716BA00CA1F11 /* BusView.swift in Sources */,
+				33621EAB234E495100E6D4B2 /* LocationService.swift in Sources */,
+				33AA04BA23296CF900B12819 /* SceneDelegate.swift in Sources */,
+				339990C02333F0C100ACBA92 /* MapView.swift in Sources */,
+				331815E2232FA4A50082944D /* LoadingView.swift in Sources */,
+				33621EA6234E492A00E6D4B2 /* APIRequest.swift in Sources */,
+				330029762369A8C400E1075B /* BusStopCellModel.swift in Sources */,
+				33621EA4234E492A00E6D4B2 /* API .swift in Sources */,
+				33621EA7234E492A00E6D4B2 /* DataSourceError.swift in Sources */,
+				3316CE752376CC7400CA1F11 /* BusStopView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33AA04C923296CF900B12819 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33AA04D223296CF900B12819 /* LondonBusTimesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		33AA04CF23296CF900B12819 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33AA04B323296CF900B12819 /* LondonBusTimes */;
+			targetProxy = 33AA04CE23296CF900B12819 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		33AA04BD23296CF900B12819 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33AA04BE23296CF900B12819 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		33AA04C523296CF900B12819 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33AA04C623296CF900B12819 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		33AA04D423296CF900B12819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		33AA04D523296CF900B12819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		33AA04D723296CF900B12819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K7VRVBX4U9;
+				INFOPLIST_FILE = LondonBusTimes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.akunle.LondonBusTimes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33AA04D823296CF900B12819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K7VRVBX4U9;
+				INFOPLIST_FILE = LondonBusTimes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.akunle.LondonBusTimes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		33AA04DA23296CF900B12819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K7VRVBX4U9;
+				INFOPLIST_FILE = LondonBusTimesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.akunle.LondonBusTimesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LondonBusTimes.app/LondonBusTimes";
+			};
+			name = Debug;
+		};
+		33AA04DB23296CF900B12819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K7VRVBX4U9;
+				INFOPLIST_FILE = LondonBusTimesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.akunle.LondonBusTimesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LondonBusTimes.app/LondonBusTimes";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33AA04AF23296CF900B12819 /* Build configuration list for PBXProject "LondonBusTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33AA04D423296CF900B12819 /* Debug */,
+				33AA04D523296CF900B12819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33AA04D623296CF900B12819 /* Build configuration list for PBXNativeTarget "LondonBusTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33AA04D723296CF900B12819 /* Debug */,
+				33AA04D823296CF900B12819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33AA04D923296CF900B12819 /* Build configuration list for PBXNativeTarget "LondonBusTimesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33AA04DA23296CF900B12819 /* Debug */,
+				33AA04DB23296CF900B12819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		33621EAC234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				33621EAD234E498100E6D4B2 /* LondonBusesTimes.xcdatamodel */,
+			);
+			currentVersion = 33621EAD234E498100E6D4B2 /* LondonBusesTimes.xcdatamodel */;
+			path = LondonBusesTimes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		33AA04C023296CF900B12819 /* LondonBusTimes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				33AA04C123296CF900B12819 /* LondonBusTimes.xcdatamodel */,
+			);
+			currentVersion = 33AA04C123296CF900B12819 /* LondonBusTimes.xcdatamodel */;
+			path = LondonBusTimes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 33AA04AC23296CF900B12819 /* Project object */;
+}
