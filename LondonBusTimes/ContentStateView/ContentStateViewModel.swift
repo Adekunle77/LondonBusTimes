@@ -10,31 +10,40 @@ import Foundation
 import Combine
 
 protocol LoadingManagerDelegate: class {
-    func didUpdateWithData(with busStops: [BusStop])
+    func didUpdateWithData(arrivalTime: [ArrivalTime], busStop: [BusStop], coordinates: Coordinate)
     func didUpdateWithError(error: Error)
-    func updateData(busStop: [BusStop], arrivalTime: [ArrivalTime])
     func dataIsLoading()
 }
 
 class ContentStateViewModel {
- 
-    private let dispatchGroup = DispatchGroup()
-    private var stopSubcriber = StopSubscriber()
-    private var stopAssignSubscriber: AnyCancellable?
-    private var stopFailureSubcriber: AnyCancellable?
+    let dispatchGroup = DispatchGroup()
+    let queue = DispatchQueue.global(qos: .userInitiated)
     private var busStopSubcriber = BusStopsSubscriber()
     private var apiRequest: APIRequest?
     private var locationService: LocationService?
     weak var delegate: LoadingManagerDelegate?
-    var count = 0
+    private var coordinates: Coordinate?
     private var busStopAssignSubscriber: AnyCancellable?
     private var busStopFailureSubscriber: AnyCancellable?
-
-    @Published var error: DataSourceError? {
+    @Published var allArrivalTimes = [ArrivalTime]()
+    @Published var arrivalTimes: [ArrivalTime]? {
         didSet {
-           // print(error?.localizedDescription)
+            guard let arrivalTimes = arrivalTimes else { return }
+            guard let busStops = self.busStops else { return }
+            guard coordinates != nil else { return }
+            self.delegate?.didUpdateWithData(
+                arrivalTime: arrivalTimes,
+                busStop: busStops,
+                coordinates: coordinates ?? (0.0, 0.0))
         }
     }
+
+    @Published var busStops: [BusStop]? {
+        didSet {
+            guard busStops != nil else { return }
+        }
+    }
+
     @Published var dataSourceError: DataSourceError? {
         didSet {
             guard let error = dataSourceError else { return }
@@ -42,52 +51,55 @@ class ContentStateViewModel {
         }
     }
 
-    @Published var busStop: [BusStop]? {
-        didSet {
-            guard let busStop = busStop else { return }
-            
-        }
-    }
-    
-    @Published var arrivalTimes: [ArrivalTime]? {
-        didSet {
-            guard let arrivalTimes = arrivalTimes else { return  }
-            guard let busStop = busStop else { return }
-            dispatchGroup.notify(queue: .main, execute: {
-                self.delegate?.updateData(busStop: busStop, arrivalTime: arrivalTimes)
-            })
-        }
-    }
-
     init() {
         self.busStopSubcriber = BusStopsSubscriber()
         locationService = LocationService(coordinates: { (result) in
+            self.coordinates = result
             self.apiRequest = APIRequest(endPoints: .findLocalStops(using: result))
             self.findLocalBusStops(with: result)
         })
-        
-    }
-    
-    private func apiRequestStopData(with stopID: [BusStop]) {
-        self.dispatchGroup.enter()
-        for id in stopID {
-            self.apiRequest?.fatchBusesData(with: id.naptanId).receive(subscriber: stopSubcriber)
-            self.stopAssignSubscriber = stopSubcriber.$busTimes.assign(to: \.arrivalTimes, on: self)
-            self.stopFailureSubcriber = stopSubcriber.$error.assign(to: \.error, on: self)
-        }
-        self.dispatchGroup.leave()
     }
 
-    
-    
     private func findLocalBusStops(with coordinates: Coordinate) {
-        self.apiRequest?.fatchBusStopData(with: .findLocalStops(using: coordinates)).receive(subscriber: busStopSubcriber)
-        self.busStopAssignSubscriber = busStopSubcriber.$busStops.assign(to: \.busStop, on: self)
+        self.apiRequest?.fetchBusStopData(with: .findLocalStops(using: coordinates))
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.dataSourceError = error
+                }
+            }, receiveValue: { busStops in
+                self.busStops = busStops
+                self.dispatchGroup.enter()
+                for busStop in busStops {
+                    _ = self.apiRequest?.fetchBusesData(with: busStop.naptanId)
+                        .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(let error):
+                            self.dataSourceError = error
+                    }
+                        
+                    }, receiveValue: { stops in
+                        for y in stops {
+                            self.allArrivalTimes.append(y)
+                        }
+                    })
+                }
+                self.dispatchGroup.leave()
+                self.dispatchGroup.notify(queue: .main) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        self.arrivalTimes = self.allArrivalTimes
+                    }
+                }
+            })
         self.busStopFailureSubscriber = busStopSubcriber.$error.assign(to: \.dataSourceError, on: self)
     }
-    
+
     func isDataAvailble() {
-        if busStop?.count == 00 && dataSourceError == nil {
+        if arrivalTimes?.count == 00 && dataSourceError == nil {
             self.delegate?.dataIsLoading()
         }
     }

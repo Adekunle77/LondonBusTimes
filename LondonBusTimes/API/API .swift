@@ -10,6 +10,6 @@ import Foundation
 import Combine
 
 protocol API {
-    func fatchBusStopData(with endPoints: Endpoints) -> AnyPublisher<[BusStop], DataSourceError>
-    func fatchBusesData(with busID: String) -> AnyPublisher<[ArrivalTime], DataSourceError> 
+    func fetchBusStopData(with endPoints: Endpoints) -> AnyPublisher<[BusStop], DataSourceError>
+    func fetchBusesData(with busID: String) -> AnyPublisher<[ArrivalTime], DataSourceError> 
 }

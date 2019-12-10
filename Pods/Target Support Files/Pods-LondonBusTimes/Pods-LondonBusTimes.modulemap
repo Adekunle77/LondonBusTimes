@@ -1,0 +1,6 @@
+module Pods_LondonBusTimes {
+  umbrella header "Pods-LondonBusTimes-umbrella.h"
+
+  export *
+  module * { export * }
+}

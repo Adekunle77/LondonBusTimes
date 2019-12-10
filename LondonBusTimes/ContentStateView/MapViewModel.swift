@@ -15,38 +15,9 @@ protocol MapViewModelDelegate: class {
 }
 
 class MapViewModel {
-
-    private var stopSubcriber = StopSubscriber()
-    private var apiRequest: APIRequest?
     private var locationService: LocationService?
     weak var delegate: MapViewModelDelegate?
-    private var stopAssignSubscriber: AnyCancellable?
-    private var stopFailureSubcriber: AnyCancellable?
-    private var busStops = [BusStop]()
-    
-    @Published var arrivalTimes: [ArrivalTime]? {
-        didSet {
-            guard let arrivalTimes = arrivalTimes else { return  }
-        }
-    }
-
-    private func apiRequestStopData(with stopID: String) {
-        self.apiRequest = APIRequest(endPoints: .getBusTimeToStop(with: stopID))
-        self.apiRequest?.fatchBusesData(with: stopID).receive(subscriber: stopSubcriber)
-        self.stopAssignSubscriber = stopSubcriber.$busTimes.assign(to: \.arrivalTimes, on: self)
-        self.stopFailureSubcriber = stopSubcriber.$error.assign(to: \.error, on: self)
-     }
-    
-//    func getAllStopsData(with busStops: [BusStop]) {
-//        for busStop in busStops {
-//            self.apiRequestStopData(with: busStop.naptanId)
-//        }
-//    }
-    
-    func getAllStopsData(with busStopID: String) {
-        self.apiRequestStopData(with: busStopID)
-    }
-    
+  
     private func sortFirstBusToStop(with busTimes: [ArrivalTime], using coordinates: BusStop) -> [Bus] {
         var times = [Bus]()
         for bus in busTimes {
@@ -57,7 +28,7 @@ class MapViewModel {
         }
         return times.sorted { $0.arrivalTime < $1.arrivalTime }
     }
-    
+
     private func sortBuses(busTimes: [ArrivalTime]) -> [Bus] {
         var buses = [Bus]()
         for bus in busTimes {
@@ -70,8 +41,8 @@ class MapViewModel {
     }
     
     func sortAllEarliestBuses(with arrivalTime: [ArrivalTime], busStops: [BusStop] ) -> [Stop] {
-        var busSet = Set<String>()
         var earliestBuses = [Stop]()
+        var busSet = Set<String>()
         for stop in arrivalTime {
             busSet.insert(stop.naptanId)
         }
@@ -104,32 +75,19 @@ class MapViewModel {
             longitudinalMeters: 500)
         view.setRegion(region, animated: true)
     }
-    
-    
-    @Published var error: DataSourceError? {
-        didSet {
-           // print(error?.localizedDescription)
-        }
-    }
-
 }
 
 struct Bus: Hashable {
     var busNumber: String
     var arrivalTime: Int
     var destination: String
-//    var lat: Double
-//    var long: Double
 
     init(busNumber: String,
          arrivalTime: Int,
-         destination: String
-         /*lat: Double, long: Double*/) {
+         destination: String) {
         self.busNumber = busNumber
         self.arrivalTime = arrivalTime
         self.destination = destination
-//        self.lat = lat
-//        self.long = long
     }
 }
 

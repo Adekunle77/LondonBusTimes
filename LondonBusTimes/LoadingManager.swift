@@ -9,12 +9,6 @@
 import Foundation
 import Combine
 
-//protocol LoadingManagerDelegate: class {
-//    func didUpdateWithData()
-//    func didUpdateWithError(error: Error)
-//    func dataIsLoading()
-//}
-
 class LoadingManager {
     private var coordinator: Coordinate?
     private var busStopSubcriber = BusStopsSubscriber()
@@ -33,11 +27,10 @@ class LoadingManager {
             self.apiRequest = APIRequest(endPoints: .findLocalStops(using: result))
             self.findLocalBusStops(with: result)
         })
-        
     }
 
     private func findLocalBusStops(with coordinates: Coordinate) {
-        self.apiRequest?.fatchBusStopData(with: .findLocalStops(using: coordinates)).receive(subscriber: busStopSubcriber)
+        self.apiRequest?.fetchBusStopData(with: .findLocalStops(using: coordinates)).receive(subscriber: busStopSubcriber)
         self.busStopAssignSubscriber = busStopSubcriber.$busStops.assign(to: \.busStop, on: self)
         self.busStopFailureSubscriber = busStopSubcriber.$error.assign(to: \.error, on: self)
     }

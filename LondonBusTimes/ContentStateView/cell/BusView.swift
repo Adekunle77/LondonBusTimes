@@ -9,24 +9,26 @@
 import UIKit
 
 class BusView: UIView {
-    let number = UILabel()
-    let arrivesIn = UILabel()
-    let destinations = UILabel()
+    let nextBusNumber = UILabel()
+    let nextBusArrivesIn = UILabel()
+    let nextBusDestinations = UILabel()
+    
+    let lastBusNumber = UILabel()
+    let lastBusArrivesIn = UILabel()
+    let lastBusDestinations = UILabel()
+    
     private let separator = UIView(frame: .zero)
     
-    func updateNumberText(_ text: String?) {
-        guard let text = text else { return }
-        number.text = text
+    func updateNextBusLabels(with busData: Bus) {
+        self.nextBusNumber.text = busData.busNumber
+        self.nextBusDestinations.text = busData.destination
+        self.nextBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
     }
     
-    func updateDestinationsText(_ text: String?) {
-        guard let text = text else { return }
-        destinations.text = text
-    }
-    
-    func updateArrivesInText(_ text: String?) {
-        guard let text = text else { return }
-        arrivesIn.text = text
+    func updateLastBusLabels(with busData: Bus) {
+        self.lastBusNumber.text = busData.busNumber
+        self.lastBusDestinations.text = busData.destination
+        self.lastBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
     }
     
     override init(frame: CGRect) {
@@ -39,48 +41,88 @@ class BusView: UIView {
         viewSetup()
     }
     
-    func viewSetup() {
+    private func viewSetup() {
    
-        arrivesIn.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        arrivesIn.textColor = .label
-        arrivesIn.textAlignment = .right
-        arrivesIn.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(arrivesIn)
+        nextBusArrivesIn.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        nextBusArrivesIn.textColor = .label
+        nextBusArrivesIn.textAlignment = .right
+        nextBusArrivesIn.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nextBusArrivesIn)
         
-        number.translatesAutoresizingMaskIntoConstraints = false
-        number.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        number.textColor = .label
-        addSubview(number)
+        nextBusNumber.translatesAutoresizingMaskIntoConstraints = false
+        nextBusNumber.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        nextBusNumber.textColor = .label
+        addSubview(nextBusNumber)
         
-        destinations.translatesAutoresizingMaskIntoConstraints = false
-        destinations.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        destinations.textColor = .secondaryLabel
-        addSubview(destinations)
+        nextBusDestinations.translatesAutoresizingMaskIntoConstraints = false
+        nextBusDestinations.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        nextBusDestinations.textColor = .secondaryLabel
+        addSubview(nextBusDestinations)
+        
+        lastBusArrivesIn.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        lastBusArrivesIn.textColor = .label
+        lastBusArrivesIn.textAlignment = .right
+        lastBusArrivesIn.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(lastBusArrivesIn)
+        
+        lastBusNumber.translatesAutoresizingMaskIntoConstraints = false
+        lastBusNumber.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        lastBusNumber.textColor = .label
+        addSubview(lastBusNumber)
+        
+        lastBusDestinations.translatesAutoresizingMaskIntoConstraints = false
+        lastBusDestinations.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        lastBusDestinations.textColor = .secondaryLabel
+        addSubview(lastBusDestinations)
         
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = .quaternaryLabel
         addSubview(separator)
         
-        let topStackView = UIStackView(arrangedSubviews: [number, arrivesIn])
+        let topStackView = UIStackView(arrangedSubviews: [nextBusNumber, nextBusArrivesIn])
         topStackView.axis = .horizontal
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(topStackView)
         NSLayoutConstraint.activate([
             topStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             topStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
+            topStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
         ])
         
-        let bottomStackView = UIStackView(arrangedSubviews: [destinations])
-        bottomStackView.axis = .vertical
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(bottomStackView)
+        let middleStackView = UIStackView(arrangedSubviews: [nextBusDestinations])
+        middleStackView.axis = .vertical
+        middleStackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(middleStackView)
         NSLayoutConstraint.activate([
-          //  separator.heightAnchor.constraint(equalToConstant: 1),
-            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+           separator.heightAnchor.constraint(equalToConstant: 1),
+            
+            middleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            middleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            middleStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
         ])
+        
+        let thirdStackView = UIStackView(arrangedSubviews: [lastBusNumber, lastBusArrivesIn])
+           thirdStackView.axis = .horizontal
+           thirdStackView.translatesAutoresizingMaskIntoConstraints = false
+           addSubview(thirdStackView)
+           NSLayoutConstraint.activate([
+               thirdStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+               thirdStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+               thirdStackView.topAnchor.constraint(equalTo: middleStackView.bottomAnchor, constant: 10)
+           ])
+           
+            let bottomStackView = UIStackView(arrangedSubviews: [lastBusDestinations])
+            bottomStackView.axis = .vertical
+            bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+            bottomStackView.spacing = 10
+            addSubview(bottomStackView)
+            NSLayoutConstraint.activate([
+               bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+               bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+               bottomStackView.topAnchor.constraint(equalTo: thirdStackView.bottomAnchor),
+               bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+           ])
+        
+        
     }
 }

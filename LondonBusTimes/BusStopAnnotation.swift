@@ -11,10 +11,24 @@ import MapKit
 
 class BusStopAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
-    var busStopName: String
-  //  var             : [/* Array of what each bus  numbers, location(lat long, & bustop name) arrival times */]
-    init(coordinate: CLLocationCoordinate2D, busStopName: String) {
+    var title: String?
+    var busDirection: String
+    var busNumber: String
+    var arrivalTime: String
+    var annotationasSubtitle: String
+    var image: UIImage?
+    
+    init(coordinate: CLLocationCoordinate2D,
+         title: String, busStopTitle: String,
+         busDirection: String,
+         arrivalTime: String,
+         annotationasSubtitle: String) {
         self.coordinate = coordinate
-        self.busStopName = busStopName
+        self.title = title
+        self.busDirection = busDirection
+        self.busNumber = busStopTitle
+        self.arrivalTime = arrivalTime
+        self.annotationasSubtitle = annotationasSubtitle
+        super.init()
     }
 }
