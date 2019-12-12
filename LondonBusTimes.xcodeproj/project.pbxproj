@@ -42,6 +42,7 @@
 		33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */; };
 		33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F1232A6FB800B12819 /* LoadingManager.swift */; };
 		33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */; };
+		33C741B223A122F700B2CD10 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C741B123A122F700B2CD10 /* DataSource.swift */; };
 		B6C0DEB305C35107D710C60C /* libPods-LondonBusTimesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A57A969355170F5254A3C43 /* libPods-LondonBusTimesTests.a */; };
 		B9D314C3EA2617917A0557F0 /* libPods-LondonBusTimes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A88CD58C68A202F0718CFE /* libPods-LondonBusTimes.a */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewModel.swift; sourceTree = "<group>"; };
 		33AA04F1232A6FB800B12819 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
 		33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopSubcriber.swift; sourceTree = "<group>"; };
+		33C741B123A122F700B2CD10 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		3A0647C4AC429E35304F2659 /* Pods-LondonBusTimesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LondonBusTimesTests.release.xcconfig"; path = "Target Support Files/Pods-LondonBusTimesTests/Pods-LondonBusTimesTests.release.xcconfig"; sourceTree = "<group>"; };
 		459870344A1D8B5BFE474030 /* Pods-LondonBusTimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LondonBusTimes.debug.xcconfig"; path = "Target Support Files/Pods-LondonBusTimes/Pods-LondonBusTimes.debug.xcconfig"; sourceTree = "<group>"; };
 		5A67AF5AAA90C14E07340672 /* Pods-LondonBusTimes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LondonBusTimes.release.xcconfig"; path = "Target Support Files/Pods-LondonBusTimes/Pods-LondonBusTimes.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				33128FFD2343878100E7C7A3 /* cell */,
 				33AA04BB23296CF900B12819 /* ContentStateView.swift */,
 				33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */,
+				33C741B123A122F700B2CD10 /* DataSource.swift */,
 				331815E1232FA4A50082944D /* LoadingView.swift */,
 				331815E3232FA6D50082944D /* ErrorView.swift */,
 				33165CD1233A473D0005AD40 /* MapViewModel.swift */,
@@ -419,6 +422,7 @@
 				33AA04BC23296CF900B12819 /* ContentStateView.swift in Sources */,
 				33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */,
 				33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */,
+				33C741B223A122F700B2CD10 /* DataSource.swift in Sources */,
 				33158A9823797AB500F6B722 /* ViewExtension.swift in Sources */,
 				33AA04C223296CF900B12819 /* LondonBusTimes.xcdatamodeld in Sources */,
 				333AC6AA232D240600FB43CA /* MainCoordinator.swift in Sources */,

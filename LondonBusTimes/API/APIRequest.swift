@@ -34,9 +34,7 @@ extension APIRequest {
             .map { $0.stopPoints}
             .eraseToAnyPublisher()
     }
-    
-    
-    
+
     func fetchBusesData(with busID: String) -> AnyPublisher<[ArrivalTime], DataSourceError> {
         let url = "https://api.tfl.gov.uk/StopPoint/\(busID)//arrivals"
         guard let busIdURL = URL(string: url) else { preconditionFailure("Can't create url for query: \(busID)") }
@@ -49,23 +47,5 @@ extension APIRequest {
             .map { $0 }
             .eraseToAnyPublisher()
     }
-    
-//    func fatchBusStopData(with endPoints: Endpoints) -> AnyPublisher<[ArrivalTime], DataSourceError> {
-//        guard let url = endPoints.url else { preconditionFailure("Can't create url for query: \(endPoints)") }
-//        return session.dataTaskPublisher(for: url)
-//            .receive(on: DispatchQueue.main)
-//            .mapError { DataSourceError.network($0) }
-//            .map { $0.data }
-//            .decode(type: TravellInfomation.self, decoder: decoder)
-//            .mapError { _ in DataSourceError.noData }
-//            .flatMap { ( stops) in
-//                var arrivalTimes = [ArrivalTime]()
-//                for stop in stops.stopPoints {
-//                    // Make URL Request with stop
-//                }
-//                return arrivalTimes
-//            }
-//            .mapError { _ in DataSourceError.noData }
-//            .eraseToAnyPublisher()
-//    }
+
 }

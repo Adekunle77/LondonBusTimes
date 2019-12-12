@@ -38,7 +38,7 @@ class BusStopCellModel {
         request.requestsAlternateRoutes = false
         let direction = MKDirections(request: request)
         
-        direction.calculate(completionHandler: { [unowned self] response, error in
+        direction.calculate(completionHandler: { response, error in
             guard let response = response else {
                 if let error = error {
                     print(error)
