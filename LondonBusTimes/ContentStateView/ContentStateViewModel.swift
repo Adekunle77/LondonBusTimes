@@ -62,7 +62,7 @@ class ContentStateViewModel {
     
     
     private func findLocalBusStops(with coordinates: Coordinate) {
-        let requestedData = self.apiRequest?.fetchBusStopData(with: .findLocalStops(using: coordinates))
+       _ = self.apiRequest?.fetchBusStopData(with: .findLocalStops(using: coordinates))
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -96,8 +96,7 @@ class ContentStateViewModel {
                     }
                 }
             })
-        requestedData
-        //self.busStopAssignSubscriber = busStopSubcriber.$busStops.assign(to: \.requestedData, on: self)
+
         self.busStopFailureSubscriber = busStopSubcriber.$error.assign(to: \.dataSourceError, on: self)
     }
 
