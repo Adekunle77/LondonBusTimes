@@ -23,6 +23,7 @@ class ContentStateViewModel {
     private var locationService: LocationService?
     weak var delegate: LoadingManagerDelegate?
     private var coordinates: Coordinate?
+    private var disposables = Set<AnyCancellable>()
     private var busStopAssignSubscriber: AnyCancellable?
     private var busStopFailureSubscriber: AnyCancellable?
     @Published var allArrivalTimes = [ArrivalTime]()
@@ -87,7 +88,7 @@ class ContentStateViewModel {
                         for y in stops {
                             self.allArrivalTimes.append(y)
                         }
-                    })
+                        }).store(in: &self.disposables)
                 }
                 self.dispatchGroup.leave()
                 self.dispatchGroup.notify(queue: .main) {
@@ -95,7 +96,7 @@ class ContentStateViewModel {
                         self.arrivalTimes = self.allArrivalTimes
                     }
                 }
-            })
+            }).store(in: &disposables)
 
         self.busStopFailureSubscriber = busStopSubcriber.$error.assign(to: \.dataSourceError, on: self)
     }
