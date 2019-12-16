@@ -14,12 +14,16 @@ class ContentStateView: UIViewController {
     weak var coordinator: MainCoordinator?
     private var viewModel: ContentStateViewModel?
     var animationView = AnimationView()
+    var dataSource: DataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = ContentStateViewModel()
         self.viewModel?.delegate = self
-    
+        
+        self.dataSource = DataSource()
+        print(dataSource?.busStops?.count, dataSource?.allArrivalTimes.count)
+        
         let animation = Animation.named("27-loading")
         self.animationView.animation = animation
         view.addSubview(animationView)
@@ -30,6 +34,7 @@ class ContentStateView: UIViewController {
         animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         self.lottieViewSetup()
+       
     }
 
     override func viewDidDisappear(_ animated: Bool) {
