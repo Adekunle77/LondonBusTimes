@@ -19,7 +19,7 @@ class ContentStateView: UIViewController {
         super.viewDidLoad()
         self.viewModel = ContentStateViewModel()
         self.viewModel?.delegate = self
-        self.viewModel?.isDataAvailble()
+    
         let animation = Animation.named("27-loading")
         self.animationView.animation = animation
         view.addSubview(animationView)
@@ -46,8 +46,9 @@ class ContentStateView: UIViewController {
 extension ContentStateView: Storyboarded {}
 
 extension ContentStateView: LoadingManagerDelegate {
-    func didUpdateWithData(arrivalTime: [ArrivalTime], busStop: [BusStop], coordinates: Coordinate) {
-        self.coordinator?.pushMapView(with: arrivalTime, busStop: busStop, coordinates: coordinates)
+
+    func didUpdateWithData() {
+        self.coordinator?.pushMapView() 
     }
 
     func didUpdateWithError(error: Error) {
