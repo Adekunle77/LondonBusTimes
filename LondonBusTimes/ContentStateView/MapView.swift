@@ -13,29 +13,32 @@ fileprivate enum CollectionViewSection: CaseIterable {
     case main
 }
 
-fileprivate typealias DataSourese = UICollectionViewDiffableDataSource<CollectionViewSection, Stop>
+fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<CollectionViewSection, Stop>
 
 class MapView: UIViewController, UICollectionViewDelegate {
     weak var coordinator: MainCoordinator?
     private var viewModel: MapViewModel?
     private var collectionViewTwo: UICollectionView!
-    private var dataSource: DataSourese?
+    private var collectionViewDataSource: CollectionViewDataSource?
     private var busAssignSubscriber: AnyCancellable?
     var arrivalTimes = [ArrivalTime]()
     var busStops = [BusStop]()
     var sortBusStopTimes = [Stop]()
     var userCurrentCoordinatess: Coordinate?
     
+    var dataSource = DataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MapViewModel()
+
         viewModel?.delegate = self
         collectionViewTwo = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewlayout())
         collectionViewTwo.autoresizingMask = [.flexibleWidth, .flexibleHeight]
               collectionViewTwo.backgroundColor = .systemBackground
         collectionViewTwo.register(BusStopCell.self, forCellWithReuseIdentifier: BusStopCell.reuseIdentifier)
         view.addSubview(collectionViewTwo)
-        self.collectionViewTwo.dataSource = dataSource
+        self.collectionViewTwo.dataSource = collectionViewDataSource
         collectionViewTwo.delegate = self
         sortBusStopTimes = self.viewModel?.sortAllEarliestBuses(with: arrivalTimes, busStops: busStops) ?? []
         collectionViewTwo.layer.backgroundColor = UIColor.clear.cgColor
@@ -43,7 +46,7 @@ class MapView: UIViewController, UICollectionViewDelegate {
         var snapShop = NSDiffableDataSourceSnapshot<CollectionViewSection, Stop>()
         snapShop.appendSections([.main])
         snapShop.appendItems(sortBusStopTimes, toSection: .main)
-        self.dataSource?.apply(snapShop, animatingDifferences: true)
+        self.collectionViewDataSource?.apply(snapShop, animatingDifferences: true)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,7 +55,7 @@ class MapView: UIViewController, UICollectionViewDelegate {
     }
     
     private func setSourceSetUp() {
-            self.dataSource = DataSourese(collectionView: self.collectionViewTwo) { (collectionView: UICollectionView, indexPath: IndexPath,
+            self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionViewTwo) { (collectionView: UICollectionView, indexPath: IndexPath,
                                stop: Stop)  -> UICollectionViewCell? in
                 guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "cell",

@@ -46,13 +46,14 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
         }
     }
     
-    func pushMapView(with arrivalTimes:[ArrivalTime], busStop: [BusStop], coordinates: Coordinate) {
+    func pushMapView() {
         DispatchQueue.main.async {
             let mapView = MapView.instantiate()
-            mapView.coordinator = self
-            mapView.arrivalTimes = arrivalTimes
-            mapView.busStops = busStop
-            mapView.userCurrentCoordinatess = coordinates
+          //  mapView.coordinator = self
+//            mapView.arrivalTimes = arrivalTimes
+//            mapView.busStops = busStop
+//            mapView.userCurrentCoordinatess = coordinates
+            print("testssssss")
             self.childCoordinator.append(mapView)
             self.navigationController.pushViewController(mapView, animated: true)
         }
