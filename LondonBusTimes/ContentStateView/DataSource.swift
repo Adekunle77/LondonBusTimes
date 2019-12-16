@@ -54,7 +54,6 @@ class DataSource {
                         }, receiveValue: { stops in
                             for y in stops {
                                 self.allArrivalTimes.append(y)
-                                print(self.allArrivalTimes.count)
                             }
                         }).store(in: &self.disposables)
                     }
