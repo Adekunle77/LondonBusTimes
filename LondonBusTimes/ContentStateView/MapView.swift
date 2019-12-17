@@ -21,6 +21,8 @@ class MapView: UIViewController, UICollectionViewDelegate {
     private var collectionViewTwo: UICollectionView!
     private var collectionViewDataSource: CollectionViewDataSource?
     private var busAssignSubscriber: AnyCancellable?
+    var disposables = Set<AnyCancellable>()
+    var dataSourse: DataSource?
     var arrivalTimes = [ArrivalTime]()
     var busStops = [BusStop]()
     var sortBusStopTimes = [Stop]()
@@ -32,6 +34,10 @@ class MapView: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         viewModel = MapViewModel()
 
+        self.dataSourse = DataSource()
+        self.loadData()
+        
+        
         viewModel?.delegate = self
         collectionViewTwo = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewlayout())
         collectionViewTwo.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -53,6 +59,14 @@ class MapView: UIViewController, UICollectionViewDelegate {
         super.viewDidDisappear(animated)
         self.coordinator?.childDidFinish(self)
     }
+    
+    private func loadData() {
+          _ = dataSourse?.$allArrivalTimes
+             .sink() { result in
+                 print(result, "tests")
+         }.store(in: &disposables)
+         
+     }
     
     private func setSourceSetUp() {
             self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionViewTwo) { (collectionView: UICollectionView, indexPath: IndexPath,

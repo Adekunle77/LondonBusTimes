@@ -9,15 +9,14 @@
 import Foundation
 import Combine
 
-protocol LoadingManagerDelegate: class {
-    func didUpdateWithData()
-    func didUpdateWithError(error: Error)
-    func dataIsLoading()
-}
-
 class ContentStateViewModel {
-    weak var delegate: LoadingManagerDelegate?
+
+    var subscriptions = Set<AnyCancellable>()
+    let dataSource: DataSource?
+    var arrivalTimes = [ArrivalTime]()
     
-    
-   
+    init() {
+        self.dataSource = DataSource()
+        self.dataSource?.$arrivalTimes.assign(to: self, on: \.arrivalTimes).store(in: &subscriptions)
+    }
 }
