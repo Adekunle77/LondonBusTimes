@@ -17,6 +17,6 @@ class ContentStateViewModel {
     
     init() {
         self.dataSource = DataSource()
-        self.dataSource?.$arrivalTimes.assign(to: self, on: \.arrivalTimes).store(in: &subscriptions)
+        self.dataSource?.$arrivalTimes.assign(to: \.arrivalTimes, on: self).store(in: &subscriptions)
     }
 }
