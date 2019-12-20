@@ -39,7 +39,6 @@
 		33AA04C423296CF900B12819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C323296CF900B12819 /* Assets.xcassets */; };
 		33AA04C723296CF900B12819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C523296CF900B12819 /* LaunchScreen.storyboard */; };
 		33AA04D223296CF900B12819 /* LondonBusTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */; };
-		33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */; };
 		33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F1232A6FB800B12819 /* LoadingManager.swift */; };
 		33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */; };
 		33C741B223A122F700B2CD10 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C741B123A122F700B2CD10 /* DataSource.swift */; };
@@ -96,7 +95,6 @@
 		33AA04CD23296CF900B12819 /* LondonBusTimesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LondonBusTimesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LondonBusTimesTests.swift; sourceTree = "<group>"; };
 		33AA04D323296CF900B12819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewModel.swift; sourceTree = "<group>"; };
 		33AA04F1232A6FB800B12819 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
 		33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopSubcriber.swift; sourceTree = "<group>"; };
 		33C741B123A122F700B2CD10 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			children = (
 				33128FFD2343878100E7C7A3 /* cell */,
 				33AA04BB23296CF900B12819 /* ContentStateView.swift */,
-				33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */,
 				33C741B123A122F700B2CD10 /* DataSource.swift */,
 				331815E1232FA4A50082944D /* LoadingView.swift */,
 				331815E3232FA6D50082944D /* ErrorView.swift */,
@@ -433,7 +430,6 @@
 				33621EA3234E492A00E6D4B2 /* EndPoints.swift in Sources */,
 				33621EAA234E495100E6D4B2 /* Coordinate.swift in Sources */,
 				333AC6A8232D143B00FB43CA /* Storyboarded.swift in Sources */,
-				33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */,
 				33621EA5234E492A00E6D4B2 /* Model.swift in Sources */,
 				33621EA2234E492A00E6D4B2 /* DataSourceCompletionHandler.swift in Sources */,
 				331815E4232FA6D50082944D /* ErrorView.swift in Sources */,

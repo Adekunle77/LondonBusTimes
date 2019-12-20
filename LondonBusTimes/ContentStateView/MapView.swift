@@ -18,27 +18,58 @@ fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSou
 class MapView: UIViewController, UICollectionViewDelegate {
     weak var coordinator: MainCoordinator?
     private var viewModel: MapViewModel?
+    
+    private var subscriptions = Set<AnyCancellable>()
+    private var dataSource = DataSource()
     private var collectionViewTwo: UICollectionView!
     private var collectionViewDataSource: CollectionViewDataSource?
-    private var busAssignSubscriber: AnyCancellable?
-    var disposables = Set<AnyCancellable>()
-    var dataSourse: DataSource?
-    var arrivalTimes = [ArrivalTime]()
+    
     var busStops = [BusStop]()
     var sortBusStopTimes = [Stop]()
     var userCurrentCoordinatess: Coordinate?
+ 
+    var arrivalTimes = [ArrivalTime]() {
+        didSet {
+            print(arrivalTimes)
+            sortBusStopTimes = self.viewModel?.sortAllEarliestBuses(with: arrivalTimes, busStops: busStops) ?? []
+            var snapShop = NSDiffableDataSourceSnapshot<CollectionViewSection, Stop>()
+            snapShop.appendSections([.main])
+            snapShop.appendItems(sortBusStopTimes, toSection: .main)
+            self.collectionViewDataSource?.apply(snapShop, animatingDifferences: true)
+        }
+    }
     
-    var dataSource = DataSource()
+    private var dataSourceError: DataSourceError? {
+        didSet {
+            if dataSourceError != nil {
+                var jcgsvcjbs = [Error]()
+                
+                guard let jhcjhcd = dataSourceError else { return }
+                print(jhcjhcd)
+                jcgsvcjbs.append(jhcjhcd)
+                self.coordinator?.pushErrorView(error: jcgsvcjbs)
+            }
+        }
+    }
+
+    
+    
+    
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MapViewModel()
-
-        self.dataSourse = DataSource()
-        self.loadData()
+        
+        busStops = self.dataSource.busStops ?? []
+        self.dataSource.$arrivalTimes.assign(to: \.arrivalTimes, on: self).store(in: &subscriptions)
+        self.dataSource.$dataSourceError.assign(to: \.dataSourceError, on: self).store(in: &subscriptions)
         
         
         viewModel?.delegate = self
+        
+        
         collectionViewTwo = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewlayout())
         collectionViewTwo.autoresizingMask = [.flexibleWidth, .flexibleHeight]
               collectionViewTwo.backgroundColor = .systemBackground
@@ -46,28 +77,20 @@ class MapView: UIViewController, UICollectionViewDelegate {
         view.addSubview(collectionViewTwo)
         self.collectionViewTwo.dataSource = collectionViewDataSource
         collectionViewTwo.delegate = self
-        sortBusStopTimes = self.viewModel?.sortAllEarliestBuses(with: arrivalTimes, busStops: busStops) ?? []
         collectionViewTwo.layer.backgroundColor = UIColor.clear.cgColor
+        
+        
         self.setSourceSetUp()
-        var snapShop = NSDiffableDataSourceSnapshot<CollectionViewSection, Stop>()
-        snapShop.appendSections([.main])
-        snapShop.appendItems(sortBusStopTimes, toSection: .main)
-        self.collectionViewDataSource?.apply(snapShop, animatingDifferences: true)
+        
+        
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.coordinator?.childDidFinish(self)
     }
-    
-    private func loadData() {
-          _ = dataSourse?.$allArrivalTimes
-             .sink() { result in
-                 print(result, "tests")
-         }.store(in: &disposables)
-         
-     }
-    
+
     private func setSourceSetUp() {
             self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionViewTwo) { (collectionView: UICollectionView, indexPath: IndexPath,
                                stop: Stop)  -> UICollectionViewCell? in

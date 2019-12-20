@@ -27,10 +27,10 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
         }
     }
     
-    func pushErrorView() {
+    func pushErrorView(error: DataSourceError?) {
         DispatchQueue.main.async {
             let errorVC = ErrorView.instantiate()
-            //errorVC.errors = error
+            errorVC.errors = error
             errorVC.coordinator = self
             self.childCoordinator.append(errorVC)
             self.navigationController.pushViewController(errorVC, animated: true)

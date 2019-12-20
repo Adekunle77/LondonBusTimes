@@ -12,18 +12,38 @@ import Lottie
 
 class ContentStateView: UIViewController {
     weak var coordinator: MainCoordinator?
-    private var viewModel: ContentStateViewModel?
-    var animationView = AnimationView()
-    var dataSource: DataSource?
+    private var subscriptions = Set<AnyCancellable>()
+    private var dataSource = DataSource()
+    private var animationView = AnimationView()
+    private var arrivalTimes = [ArrivalTime]() {
+        didSet {
+            if arrivalTimes.count > 0 {
+                self.coordinator?.pushMapView()
+            }
+        }
+    }
+    /*
+     
+     CONNECTION ERROR!
+     
+     No connection error
+     
+     
+     */
+    private var dataSourceError: DataSourceError? {
+        didSet {
+            if dataSourceError != nil {
+                self.coordinator?.pushErrorView(error: dataSourceError)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = ContentStateViewModel()
-        self.viewModel?.delegate = self
-        
-        self.dataSource = DataSource()
-        print(dataSource?.busStops?.count, dataSource?.allArrivalTimes.count)
-        
+        self.loadAnimation()
+
+        self.dataSource.$arrivalTimes.assign(to: \.arrivalTimes, on: self).store(in: &subscriptions)
+        self.dataSource.$dataSourceError.assign(to: \.dataSourceError, on: self).store(in: &subscriptions)
         let animation = Animation.named("27-loading")
         self.animationView.animation = animation
         view.addSubview(animationView)
@@ -37,6 +57,9 @@ class ContentStateView: UIViewController {
        
     }
 
+    private func loadAnimation() {
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.coordinator?.childDidFinish(self)
@@ -49,18 +72,3 @@ class ContentStateView: UIViewController {
 }
 
 extension ContentStateView: Storyboarded {}
-
-extension ContentStateView: LoadingManagerDelegate {
-
-    func didUpdateWithData() {
-        self.coordinator?.pushMapView() 
-    }
-
-    func didUpdateWithError(error: Error) {
-        self.coordinator?.pushErrorView()
-    }
-
-    func dataIsLoading() {
-        self.coordinator?.pushLoadingView()
-    }
-}

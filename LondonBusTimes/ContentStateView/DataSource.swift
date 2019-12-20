@@ -16,10 +16,13 @@ class DataSource: ObservableObject {
     private var apiRequest: APIRequest?
     private var locationService: LocationService?
     private var disposables = Set<AnyCancellable>()
-    private var coordinates: Coordinate?
+    var coordinates: Coordinate?
+    
     @Published var allArrivalTimes = [ArrivalTime]()
     @Published var arrivalTimes = [ArrivalTime]()
+    
     @Published var busStops: [BusStop]?
+    
     @Published var dataSourceError: DataSourceError?
 
     init() {
@@ -27,6 +30,7 @@ class DataSource: ObservableObject {
         locationService = LocationService(coordinates: { result in
             self.apiRequest = APIRequest(endPoints: .findLocalStops(using: result))
             self.findLocalBusStops(with: result)
+            self.coordinates = result
         })
         
     }
@@ -57,13 +61,13 @@ class DataSource: ObservableObject {
                                 self.allArrivalTimes.append(y)
                             }
                         }).store(in: &self.disposables)
+                }
+                self.dispatchGroup.leave()
+                self.dispatchGroup.notify(queue: .main) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        self.arrivalTimes = self.allArrivalTimes
                     }
-                    self.dispatchGroup.leave()
-                    self.dispatchGroup.notify(queue: .main) {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            self.arrivalTimes = self.allArrivalTimes
-                        }
-                    }
-                }).store(in: &disposables)
+                }
+            }).store(in: &disposables)
     }
 }
