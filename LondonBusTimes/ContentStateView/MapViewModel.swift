@@ -41,6 +41,7 @@ class MapViewModel {
     }
     
     func sortAllEarliestBuses(with arrivalTime: [ArrivalTime], busStops: [BusStop] ) -> [Stop] {
+        
         var earliestBuses = [Stop]()
         var busSet = Set<String>()
         for stop in arrivalTime {

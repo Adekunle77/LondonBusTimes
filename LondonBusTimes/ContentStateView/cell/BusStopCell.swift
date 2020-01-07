@@ -20,14 +20,15 @@ class BusStopCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-      map.removeAnnotations(map.annotations)
+        map.removeAnnotations(map.annotations)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
         map.delegate = self
-        map.isZoomEnabled = false
+        map.isZoomEnabled = true
+        
         self.map.isScrollEnabled = false
         self.map.isUserInteractionEnabled = false
         self.layer.shadowColor = UIColor.lightGray.cgColor
@@ -38,6 +39,11 @@ class BusStopCell: UICollectionViewCell {
     }
     
     func updateCell(with stopInfo: Stop, coordinates: Coordinate) {
+        if map.isUserLocationVisible == false {
+            //return
+        }
+        
+        
         self.busStopView.updateLabels(with: stopInfo)
         if stopInfo.buses.count > 1 {
             secondBusView.updateNextBusLabels(with: stopInfo.buses[1])
@@ -46,16 +52,67 @@ class BusStopCell: UICollectionViewCell {
         if stopInfo.buses.count > 2 {
             secondBusView.updateLastBusLabels(with: stopInfo.buses[2])
         }
-
-        viewModel.getDirections(startCoordinates: coordinates, finishInfo: stopInfo, mapView: self.map)
+      //  self.map.showsUserLocation = true
+        viewModel.addAnnonations(mapView: self.map, busStopInfo: stopInfo, userLocation: coordinates)
+        //self.map.showAnnotations(self.map.annotations, animated: true)
+        self.zoomToFitMapAnnotations(map: self.map)
+//        var zoomRect = MKMapRect.null
+//        let myLocationPointRect = MKMapRect(x: coordinates.longitude, y: coordinates.latitude, width: 100, height: 100)
+//        let currentDestinationPointRect = MKMapRect(x: stopInfo.long, y: stopInfo.lat, width: 100, height: 100)
+//
+//        zoomRect = myLocationPointRect
+//        zoomRect = zoomRect.union(currentDestinationPointRect)
+//        self.map.setVisibleMapRect(zoomRect, animated: true)
+        
+        
+//        let region = MKCoordinateRegion(center: map.userLocation.coordinate, latitudinalMeters: 100, longitudinalMeters: 500)
+//        self.map.setRegion(map.regionThatFits(region), animated: true)
+        
+       // viewModel.getDirections(startCoordinates: coordinates, finishInfo: stopInfo, mapView: self.map)
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        //map.alpha = 1
+        map.showsUserLocation = true
     }
 
-    private func setupMyLabel() {
+    func zoomToFitMapAnnotations(map:MKMapView)
+    {
+        if(map.annotations.count == 0)
+        {
+              return
+        }
 
+        var topLeftCoord = CLLocationCoordinate2D(latitude: -190, longitude: 380)
+
+        var bottomRightCoord = CLLocationCoordinate2D(latitude: 190, longitude: -380)
+
+
+        map.annotations.forEach {
+
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, $0.coordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, $0.coordinate.latitude)
+
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, $0.coordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, $0.coordinate.latitude)
+        }
+
+        let resd = CLLocationCoordinate2D(latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5, longitude: topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5)
+
+        let span = MKCoordinateSpan(latitudeDelta: fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.3, longitudeDelta: fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.3)
+
+        var region = MKCoordinateRegion(center: resd, span: span)
+
+        region = map.regionThatFits(region)
+
+        map.setRegion(region, animated: true)
+
+
+    }
+
+
+
+
+    private func setupMyLabel() {
         busStopView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(busStopView)
         secondBusView.translatesAutoresizingMaskIntoConstraints = false
@@ -112,6 +169,22 @@ extension BusStopCell: MKMapViewDelegate, UIPopoverPresentationControllerDelegat
         renderer.strokeColor = .systemBlue
         return renderer
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+
+        return annotationView
+    }
 }
 
 extension Int {
@@ -122,3 +195,37 @@ extension Int {
         return "\(self / 60) mins"
     }
 }
+
+//extension MKMapView {
+//    /// when we call this function, we have already added the annotations to the map, and just want all of them to be displayed.
+//    func fitAll() {
+//        var zoomRect            = MKMapRect.null;
+//        for annotation in annotations {
+//            let annotationPoint = MKMapPoint(annotation.coordinate)
+//            let pointRect       = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.01, height: 0.01);
+//            zoomRect            = zoomRect.union(pointRect);
+//        }
+//        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: true)
+//    }
+//
+//    /// we call this function and give it the annotations we want added to the map. we display the annotations if necessary
+//    func fitAll(in annotations: [MKAnnotation], andShow show: Bool) {
+//        var zoomRect:MKMapRect  = MKMapRect.null
+//
+//        for annotation in annotations {
+//            let aPoint          = MKMapPoint(annotation.coordinate)
+//            let rect            = MKMapRect(x: aPoint.x, y: aPoint.y, width: 0.1, height: 0.1)
+//
+//            if zoomRect.isNull {
+//                zoomRect = rect
+//            } else {
+//                zoomRect = zoomRect.union(rect)
+//            }
+//        }
+//        if(show) {
+//            addAnnotations(annotations)
+//        }
+//        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: true)
+//    }
+//
+//}

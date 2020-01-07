@@ -53,7 +53,7 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
 //            mapView.arrivalTimes = arrivalTimes
 //            mapView.busStops = busStop
 //            mapView.userCurrentCoordinatess = coordinates
-            print("testssssss")
+           
             self.childCoordinator.append(mapView)
             self.navigationController.pushViewController(mapView, animated: true)
         }

@@ -22,14 +22,7 @@ class ContentStateView: UIViewController {
             }
         }
     }
-    /*
-     
-     CONNECTION ERROR!
-     
-     No connection error
-     
-     
-     */
+
     private var dataSourceError: DataSourceError? {
         didSet {
             if dataSourceError != nil {
@@ -40,8 +33,6 @@ class ContentStateView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadAnimation()
-
         self.dataSource.$arrivalTimes.assign(to: \.arrivalTimes, on: self).store(in: &subscriptions)
         self.dataSource.$dataSourceError.assign(to: \.dataSourceError, on: self).store(in: &subscriptions)
         let animation = Animation.named("27-loading")
@@ -54,12 +45,8 @@ class ContentStateView: UIViewController {
         animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         self.lottieViewSetup()
-       
     }
 
-    private func loadAnimation() {
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.coordinator?.childDidFinish(self)

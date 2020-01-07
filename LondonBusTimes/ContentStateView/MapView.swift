@@ -18,19 +18,23 @@ fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSou
 class MapView: UIViewController, UICollectionViewDelegate {
     weak var coordinator: MainCoordinator?
     private var viewModel: MapViewModel?
-    
     private var subscriptions = Set<AnyCancellable>()
     private var dataSource = DataSource()
-    private var collectionViewTwo: UICollectionView!
+    private var collectionView: UICollectionView!
     private var collectionViewDataSource: CollectionViewDataSource?
+    private var headView = UIView()
+    let refreshButton = UIButton(type: .custom)
     
-    var busStops = [BusStop]()
+    var busStops = [BusStop]() {
+        didSet {
+          
+        }
+    }
     var sortBusStopTimes = [Stop]()
     var userCurrentCoordinatess: Coordinate?
  
     var arrivalTimes = [ArrivalTime]() {
         didSet {
-            print(arrivalTimes)
             sortBusStopTimes = self.viewModel?.sortAllEarliestBuses(with: arrivalTimes, busStops: busStops) ?? []
             var snapShop = NSDiffableDataSourceSnapshot<CollectionViewSection, Stop>()
             snapShop.appendSections([.main])
@@ -45,45 +49,42 @@ class MapView: UIViewController, UICollectionViewDelegate {
                 var jcgsvcjbs = [Error]()
                 
                 guard let jhcjhcd = dataSourceError else { return }
-                print(jhcjhcd)
+                
                 jcgsvcjbs.append(jhcjhcd)
-                self.coordinator?.pushErrorView(error: jcgsvcjbs)
+               // self.coordinator?.pushErrorView(error: jcgsvcjbs)
             }
         }
     }
 
-    
-    
-    
-
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MapViewModel()
-        
-        busStops = self.dataSource.busStops ?? []
+        busStops = self.dataSource.busStops
         self.dataSource.$arrivalTimes.assign(to: \.arrivalTimes, on: self).store(in: &subscriptions)
+        self.dataSource.$busStops.assign(to: \.busStops, on: self).store(in: &subscriptions)
         self.dataSource.$dataSourceError.assign(to: \.dataSourceError, on: self).store(in: &subscriptions)
-        
-        
         viewModel?.delegate = self
         
-        
-        collectionViewTwo = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewlayout())
-        collectionViewTwo.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-              collectionViewTwo.backgroundColor = .systemBackground
-        collectionViewTwo.register(BusStopCell.self, forCellWithReuseIdentifier: BusStopCell.reuseIdentifier)
-        view.addSubview(collectionViewTwo)
-        self.collectionViewTwo.dataSource = collectionViewDataSource
-        collectionViewTwo.delegate = self
-        collectionViewTwo.layer.backgroundColor = UIColor.clear.cgColor
-        
-        
-        self.setSourceSetUp()
-        
-        
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewlayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(BusStopCell.self, forCellWithReuseIdentifier: BusStopCell.reuseIdentifier)
+        self.collectionView.dataSource = collectionViewDataSource
+        collectionView.delegate = self
+        collectionView.layer.backgroundColor = UIColor.clear.cgColor
+        collectionView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height - 90)
+        view.addSubview(collectionView)
 
+        refreshButton.backgroundColor = .clear
+        refreshButton.setTitle("Press here to update the times", for: .normal)
+        refreshButton.layer.borderWidth = 1
+        refreshButton.layer.borderColor = UIColor.white.cgColor
+        refreshButton.frame = CGRect(x: 20, y: 50, width: self.view.frame.width - 50, height: 30)
+        refreshButton.addTarget(self, action: #selector(MapView.pushContentStateView), for: .touchUpInside)
+        refreshButton.center.x = self.view.center.x
+        self.view.addSubview(refreshButton)
+        self.setSourceSetUp()
+ 
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -91,15 +92,21 @@ class MapView: UIViewController, UICollectionViewDelegate {
         self.coordinator?.childDidFinish(self)
     }
 
+    @objc func pushContentStateView() {
+      print("Button Clicked")
+    }
+
     private func setSourceSetUp() {
-            self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionViewTwo) { (collectionView: UICollectionView, indexPath: IndexPath,
+            self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionView) { (collectionView: UICollectionView, indexPath: IndexPath,
                                stop: Stop)  -> UICollectionViewCell? in
                 guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "cell",
                     for: indexPath) as? BusStopCell else { fatalError("Cannot create new cell") }
                 cell.backgroundColor = .white
-                cell.updateCell(with: stop, coordinates: self.userCurrentCoordinatess ?? (0.0, 0.0))
-                
+                guard let coordinates = self.dataSource.coordinates else { return cell }
+          
+                cell.updateCell(with: stop, coordinates: coordinates)
+        
                 return cell
         }
     }
@@ -110,9 +117,17 @@ class MapView: UIViewController, UICollectionViewDelegate {
         item.contentInsets = NSDirectionalEdgeInsets(top: 12.5, leading: 25, bottom: 12.5, trailing: 25)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(550))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
         let section = NSCollectionLayoutSection(group: group)
         let layouut = UICollectionViewCompositionalLayout(section: section)
+   
         return layouut
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .fractionalHeight(3.5))
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        return layoutSectionHeader
     }
 }
 
@@ -121,6 +136,5 @@ extension MapView: UICollectionViewDelegateFlowLayout {}
 
 extension MapView: MapViewModelDelegate {
     func didUpdateWithData(with stops: [ArrivalTime]) {
-   
     }
 }

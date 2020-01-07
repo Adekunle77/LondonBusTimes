@@ -25,6 +25,12 @@ class ErrorView: UIViewController {
         super.viewDidDisappear(animated)
         self.coordinator?.childDidFinish(self)
     }
+    
+    @IBAction private func backToContentStateView(_ sender: Any) {
+        self.coordinator?.start()
+    }
 }
 
 extension ErrorView: Storyboarded {}
+
+

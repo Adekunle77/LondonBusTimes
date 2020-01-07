@@ -21,7 +21,7 @@ class DataSource: ObservableObject {
     @Published var allArrivalTimes = [ArrivalTime]()
     @Published var arrivalTimes = [ArrivalTime]()
     
-    @Published var busStops: [BusStop]?
+    @Published var busStops = [BusStop]()
     
     @Published var dataSourceError: DataSourceError?
 
@@ -64,7 +64,7 @@ class DataSource: ObservableObject {
                 }
                 self.dispatchGroup.leave()
                 self.dispatchGroup.notify(queue: .main) {
-                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         self.arrivalTimes = self.allArrivalTimes
                     }
                 }
