@@ -10,7 +10,6 @@ import Combine
 import Foundation
 
 class DataSource: ObservableObject {
-    
     private let dispatchGroup = DispatchGroup()
     private var busStopSubcriber = BusStopsSubscriber()
     private var apiRequest: APIRequest?
@@ -18,13 +17,15 @@ class DataSource: ObservableObject {
     private var disposables = Set<AnyCancellable>()
     var coordinates: Coordinate?
     
+    private var count = 0
+    
     @Published var allArrivalTimes = [ArrivalTime]()
     @Published var arrivalTimes = [ArrivalTime]()
     
     @Published var busStops = [BusStop]()
     
     @Published var dataSourceError: DataSourceError?
-
+    
     init() {
         busStopSubcriber = BusStopsSubscriber()
         locationService = LocationService(coordinates: { result in
@@ -32,7 +33,6 @@ class DataSource: ObservableObject {
             self.findLocalBusStops(with: result)
             self.coordinates = result
         })
-        
     }
     
     private func findLocalBusStops(with coordinates: Coordinate) {
@@ -54,7 +54,10 @@ class DataSource: ObservableObject {
                             case .finished:
                                 break
                             case .failure(let error):
-                                self.dataSourceError = error
+                                self.count += 1
+                                if self.count == 1 {
+                                    self.dataSourceError = error
+                                }
                             }
                         }, receiveValue: { stops in
                             for y in stops {

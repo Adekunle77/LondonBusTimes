@@ -20,15 +20,15 @@ class BusView: UIView {
     private let separator = UIView(frame: .zero)
     
     func updateNextBusLabels(with busData: Bus) {
-        self.nextBusNumber.text = busData.busNumber
-        self.nextBusDestinations.text = busData.destination
-        self.nextBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
+        nextBusNumber.text = busData.busNumber
+        nextBusDestinations.text = busData.destination
+        nextBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
     }
     
     func updateLastBusLabels(with busData: Bus) {
-        self.lastBusNumber.text = busData.busNumber
-        self.lastBusDestinations.text = busData.destination
-        self.lastBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
+        lastBusNumber.text = busData.busNumber
+        lastBusDestinations.text = busData.destination
+        lastBusArrivesIn.text = busData.arrivalTime.changeToMinutes()
     }
     
     override init(frame: CGRect) {
@@ -42,7 +42,6 @@ class BusView: UIView {
     }
     
     private func viewSetup() {
-   
         nextBusArrivesIn.font = UIFont.preferredFont(forTextStyle: .subheadline)
         nextBusArrivesIn.textColor = .label
         nextBusArrivesIn.textAlignment = .right
@@ -94,7 +93,7 @@ class BusView: UIView {
         middleStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(middleStackView)
         NSLayoutConstraint.activate([
-           separator.heightAnchor.constraint(equalToConstant: 1),
+            separator.heightAnchor.constraint(equalToConstant: 1),
             
             middleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             middleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -102,27 +101,25 @@ class BusView: UIView {
         ])
         
         let thirdStackView = UIStackView(arrangedSubviews: [lastBusNumber, lastBusArrivesIn])
-           thirdStackView.axis = .horizontal
-           thirdStackView.translatesAutoresizingMaskIntoConstraints = false
-           addSubview(thirdStackView)
-           NSLayoutConstraint.activate([
-               thirdStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-               thirdStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-               thirdStackView.topAnchor.constraint(equalTo: middleStackView.bottomAnchor, constant: 10)
-           ])
-           
-            let bottomStackView = UIStackView(arrangedSubviews: [lastBusDestinations])
-            bottomStackView.axis = .vertical
-            bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-            bottomStackView.spacing = 10
-            addSubview(bottomStackView)
-            NSLayoutConstraint.activate([
-               bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-               bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-               bottomStackView.topAnchor.constraint(equalTo: thirdStackView.bottomAnchor),
-               bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-           ])
+        thirdStackView.axis = .horizontal
+        thirdStackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(thirdStackView)
+        NSLayoutConstraint.activate([
+            thirdStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            thirdStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            thirdStackView.topAnchor.constraint(equalTo: middleStackView.bottomAnchor, constant: 10),
+        ])
         
-        
+        let bottomStackView = UIStackView(arrangedSubviews: [lastBusDestinations])
+        bottomStackView.axis = .vertical
+        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomStackView.spacing = 10
+        addSubview(bottomStackView)
+        NSLayoutConstraint.activate([
+            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomStackView.topAnchor.constraint(equalTo: thirdStackView.bottomAnchor),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
     }
 }

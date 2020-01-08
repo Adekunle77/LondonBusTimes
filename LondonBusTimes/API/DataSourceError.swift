@@ -29,8 +29,7 @@ extension DataSourceError: LocalizedError {
             return NSLocalizedString("NO INFORMATION \n There is no information available!",
                                      comment: "No information")
         case .dataError:
-            return NSLocalizedString("INFORMATION ERROR \n There is an error with the information!",
-                                     comment: "Information Error")
+            return NSLocalizedString("NETWORK ERROR \n There is an error with the downloading the \n information or                                        there is no network connection!", comment: "Information Error")
         case .jsonParseError:
             return NSLocalizedString("INFORMATION ERROR! \n There is a error downloading the information!",
                                      comment: "Downloading error")
