@@ -30,7 +30,7 @@ class BusStopsViewController: UIViewController, UICollectionViewDelegate {
     }
     
     var sortBusStopTimes = [Stop]()
-    var userCurrentCoordinatess: Coordinate?
+    var userCurrentCoordinates: Coordinate?
     
     var arrivalTimes = [ArrivalTime]() {
         didSet {
@@ -48,7 +48,7 @@ class BusStopsViewController: UIViewController, UICollectionViewDelegate {
                 var errorArray = [Error]()
                 guard let error = dataSourceError else { return }
                 errorArray.append(error)
-                //self.coordinator?.pushErrorView(error: errorArray)
+                // self.coordinator?.pushErrorView(error: errorArray)
             }
         }
     }
@@ -94,15 +94,13 @@ class BusStopsViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func setSourceSetUp() {
-        collectionViewDataSource = CollectionViewDataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath,
-                                                                                               stop: Stop) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "cell",
-                for: indexPath) as? BusStopCell else { fatalError("Cannot create new cell") }
+        collectionViewDataSource = CollectionViewDataSource(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, stop: Stop) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
+                                                                for: indexPath) as? BusStopCell else { fatalError("Cannot create new cell") }
             cell.backgroundColor = .white
             guard let coordinates = self.dataSource.coordinates else { return cell }
             cell.updateCell(with: stop, coordinates: coordinates)
-            
             return cell
         }
     }
