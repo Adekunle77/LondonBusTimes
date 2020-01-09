@@ -33,4 +33,3 @@ Using UICollectionViewDiffableDataSource the code below is all that is used to s
         }
     }
  ```
-
