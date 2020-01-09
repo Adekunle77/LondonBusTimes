@@ -11,12 +11,11 @@
 		33008FBD233CB2FF00EA2234 /* StopSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33008FBC233CB2FF00EA2234 /* StopSubscriber.swift */; };
 		3313507B239BBF2A00C31AA3 /* 27-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3313507A239BBF2A00C31AA3 /* 27-loading.json */; };
 		33158A9823797AB500F6B722 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33158A9723797AB500F6B722 /* ViewExtension.swift */; };
-		33165CD2233A473D0005AD40 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33165CD1233A473D0005AD40 /* MapViewModel.swift */; };
+		33165CD2233A473D0005AD40 /* BusStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33165CD1233A473D0005AD40 /* BusStopsViewModel.swift */; };
 		33165CD4233A67030005AD40 /* BusStopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33165CD3233A67030005AD40 /* BusStopAnnotation.swift */; };
 		3316CE752376CC7400CA1F11 /* BusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3316CE742376CC7400CA1F11 /* BusStopView.swift */; };
 		3316CE77237716BA00CA1F11 /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3316CE76237716BA00CA1F11 /* BusView.swift */; };
-		331815E2232FA4A50082944D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331815E1232FA4A50082944D /* LoadingView.swift */; };
-		331815E4232FA6D50082944D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331815E3232FA6D50082944D /* ErrorView.swift */; };
+		331815E4232FA6D50082944D /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331815E3232FA6D50082944D /* ErrorViewController.swift */; };
 		333AC6A6232D141400FB43CA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A5232D141400FB43CA /* Coordinator.swift */; };
 		333AC6A8232D143B00FB43CA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A7232D143B00FB43CA /* Storyboarded.swift */; };
 		333AC6AA232D240600FB43CA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AC6A9232D240600FB43CA /* MainCoordinator.swift */; };
@@ -30,16 +29,15 @@
 		33621EAA234E495100E6D4B2 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA8234E495100E6D4B2 /* Coordinate.swift */; };
 		33621EAB234E495100E6D4B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33621EA9234E495100E6D4B2 /* LocationService.swift */; };
 		33621EAE234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33621EAC234E498100E6D4B2 /* LondonBusesTimes.xcdatamodeld */; };
-		339990C02333F0C100ACBA92 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339990BF2333F0C100ACBA92 /* MapView.swift */; };
+		339990C02333F0C100ACBA92 /* BusStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339990BF2333F0C100ACBA92 /* BusStopsViewController.swift */; };
 		33AA04B823296CF900B12819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04B723296CF900B12819 /* AppDelegate.swift */; };
 		33AA04BA23296CF900B12819 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04B923296CF900B12819 /* SceneDelegate.swift */; };
-		33AA04BC23296CF900B12819 /* ContentStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04BB23296CF900B12819 /* ContentStateView.swift */; };
+		33AA04BC23296CF900B12819 /* ContentStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04BB23296CF900B12819 /* ContentStateViewController.swift */; };
 		33AA04BF23296CF900B12819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04BD23296CF900B12819 /* Main.storyboard */; };
 		33AA04C223296CF900B12819 /* LondonBusTimes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04C023296CF900B12819 /* LondonBusTimes.xcdatamodeld */; };
 		33AA04C423296CF900B12819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C323296CF900B12819 /* Assets.xcassets */; };
 		33AA04C723296CF900B12819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AA04C523296CF900B12819 /* LaunchScreen.storyboard */; };
 		33AA04D223296CF900B12819 /* LondonBusTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */; };
-		33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */; };
 		33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F1232A6FB800B12819 /* LoadingManager.swift */; };
 		33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */; };
 		33C741B223A122F700B2CD10 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C741B123A122F700B2CD10 /* DataSource.swift */; };
@@ -64,12 +62,11 @@
 		33008FBC233CB2FF00EA2234 /* StopSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSubscriber.swift; sourceTree = "<group>"; };
 		3313507A239BBF2A00C31AA3 /* 27-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27-loading.json"; sourceTree = "<group>"; };
 		33158A9723797AB500F6B722 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		33165CD1233A473D0005AD40 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		33165CD1233A473D0005AD40 /* BusStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewModel.swift; sourceTree = "<group>"; };
 		33165CD3233A67030005AD40 /* BusStopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopAnnotation.swift; sourceTree = "<group>"; };
 		3316CE742376CC7400CA1F11 /* BusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopView.swift; sourceTree = "<group>"; };
 		3316CE76237716BA00CA1F11 /* BusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusView.swift; sourceTree = "<group>"; };
-		331815E1232FA4A50082944D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		331815E3232FA6D50082944D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		331815E3232FA6D50082944D /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		333AC6A5232D141400FB43CA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		333AC6A7232D143B00FB43CA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		333AC6A9232D240600FB43CA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -83,11 +80,11 @@
 		33621EA8234E495100E6D4B2 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		33621EA9234E495100E6D4B2 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		33621EAD234E498100E6D4B2 /* LondonBusesTimes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LondonBusesTimes.xcdatamodel; sourceTree = "<group>"; };
-		339990BF2333F0C100ACBA92 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		339990BF2333F0C100ACBA92 /* BusStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewController.swift; sourceTree = "<group>"; };
 		33AA04B423296CF900B12819 /* LondonBusTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LondonBusTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AA04B723296CF900B12819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33AA04B923296CF900B12819 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		33AA04BB23296CF900B12819 /* ContentStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateView.swift; sourceTree = "<group>"; };
+		33AA04BB23296CF900B12819 /* ContentStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewController.swift; sourceTree = "<group>"; };
 		33AA04BE23296CF900B12819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33AA04C123296CF900B12819 /* LondonBusTimes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LondonBusTimes.xcdatamodel; sourceTree = "<group>"; };
 		33AA04C323296CF900B12819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +93,6 @@
 		33AA04CD23296CF900B12819 /* LondonBusTimesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LondonBusTimesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AA04D123296CF900B12819 /* LondonBusTimesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LondonBusTimesTests.swift; sourceTree = "<group>"; };
 		33AA04D323296CF900B12819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewModel.swift; sourceTree = "<group>"; };
 		33AA04F1232A6FB800B12819 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
 		33AA04F3232A70A700B12819 /* BusStopSubcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopSubcriber.swift; sourceTree = "<group>"; };
 		33C741B123A122F700B2CD10 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -142,13 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				33128FFD2343878100E7C7A3 /* cell */,
-				33AA04BB23296CF900B12819 /* ContentStateView.swift */,
-				33AA04EF232A4AA600B12819 /* ContentStateViewModel.swift */,
+				33AA04BB23296CF900B12819 /* ContentStateViewController.swift */,
 				33C741B123A122F700B2CD10 /* DataSource.swift */,
-				331815E1232FA4A50082944D /* LoadingView.swift */,
-				331815E3232FA6D50082944D /* ErrorView.swift */,
-				33165CD1233A473D0005AD40 /* MapViewModel.swift */,
-				339990BF2333F0C100ACBA92 /* MapView.swift */,
+				331815E3232FA6D50082944D /* ErrorViewController.swift */,
+				33165CD1233A473D0005AD40 /* BusStopsViewModel.swift */,
+				339990BF2333F0C100ACBA92 /* BusStopsViewController.swift */,
 			);
 			path = ContentStateView;
 			sourceTree = "<group>";
@@ -418,8 +412,8 @@
 			files = (
 				333AC6A6232D141400FB43CA /* Coordinator.swift in Sources */,
 				33008FBD233CB2FF00EA2234 /* StopSubscriber.swift in Sources */,
-				33165CD2233A473D0005AD40 /* MapViewModel.swift in Sources */,
-				33AA04BC23296CF900B12819 /* ContentStateView.swift in Sources */,
+				33165CD2233A473D0005AD40 /* BusStopsViewModel.swift in Sources */,
+				33AA04BC23296CF900B12819 /* ContentStateViewController.swift in Sources */,
 				33AA04F4232A70A700B12819 /* BusStopSubcriber.swift in Sources */,
 				33AA04F2232A6FB800B12819 /* LoadingManager.swift in Sources */,
 				33C741B223A122F700B2CD10 /* DataSource.swift in Sources */,
@@ -433,15 +427,13 @@
 				33621EA3234E492A00E6D4B2 /* EndPoints.swift in Sources */,
 				33621EAA234E495100E6D4B2 /* Coordinate.swift in Sources */,
 				333AC6A8232D143B00FB43CA /* Storyboarded.swift in Sources */,
-				33AA04F0232A4AA600B12819 /* ContentStateViewModel.swift in Sources */,
 				33621EA5234E492A00E6D4B2 /* Model.swift in Sources */,
 				33621EA2234E492A00E6D4B2 /* DataSourceCompletionHandler.swift in Sources */,
-				331815E4232FA6D50082944D /* ErrorView.swift in Sources */,
+				331815E4232FA6D50082944D /* ErrorViewController.swift in Sources */,
 				3316CE77237716BA00CA1F11 /* BusView.swift in Sources */,
 				33621EAB234E495100E6D4B2 /* LocationService.swift in Sources */,
 				33AA04BA23296CF900B12819 /* SceneDelegate.swift in Sources */,
-				339990C02333F0C100ACBA92 /* MapView.swift in Sources */,
-				331815E2232FA4A50082944D /* LoadingView.swift in Sources */,
+				339990C02333F0C100ACBA92 /* BusStopsViewController.swift in Sources */,
 				33621EA6234E492A00E6D4B2 /* APIRequest.swift in Sources */,
 				330029762369A8C400E1075B /* BusStopCellModel.swift in Sources */,
 				33621EA4234E492A00E6D4B2 /* API .swift in Sources */,

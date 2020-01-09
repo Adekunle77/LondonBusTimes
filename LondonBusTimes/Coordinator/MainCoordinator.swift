@@ -20,40 +20,35 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
     func start() {
         DispatchQueue.main.async {
             self.navigationController.delegate = self
-            let contentStateVC = ContentStateView.instantiate()
+            let contentStateVC = ContentStateViewController.instantiate()
             contentStateVC.coordinator = self
             self.childCoordinator.append(contentStateVC)
             self.navigationController.pushViewController(contentStateVC, animated: false)
         }
     }
     
-    func pushErrorView() {
+    func pushErrorViewController(error: DataSourceError?) {
         DispatchQueue.main.async {
-            let errorVC = ErrorView.instantiate()
-            //errorVC.errors = error
+            let errorVC = ErrorViewController.instantiate()
+            errorVC.errors = error
             errorVC.coordinator = self
             self.childCoordinator.append(errorVC)
             self.navigationController.pushViewController(errorVC, animated: true)
         }
     }
     
-    func pushLoadingView() {
+    func pushContentStateView() {
         DispatchQueue.main.async {
-            let loadingView = LoadingView.instantiate()
-            loadingView.coordinator = self
-            self.childCoordinator.append(loadingView)
-            self.navigationController.pushViewController(loadingView, animated: true)
+            let contentStateView = ContentStateViewController.instantiate()
+            contentStateView.coordinator = self
+            self.childCoordinator.append(contentStateView)
+            self.navigationController.pushViewController(contentStateView, animated: true)
         }
     }
-    
-    func pushMapView() {
+        
+    func pushBusStopsViewController() {
         DispatchQueue.main.async {
-            let mapView = MapView.instantiate()
-          //  mapView.coordinator = self
-//            mapView.arrivalTimes = arrivalTimes
-//            mapView.busStops = busStop
-//            mapView.userCurrentCoordinatess = coordinates
-            print("testssssss")
+            let mapView = BusStopsViewController.instantiate()
             self.childCoordinator.append(mapView)
             self.navigationController.pushViewController(mapView, animated: true)
         }
@@ -66,5 +61,4 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
             }
         }
     }
-
 }

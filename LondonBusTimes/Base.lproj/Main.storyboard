@@ -7,34 +7,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Error View-->
+        <!--Error View Controller-->
         <scene sceneID="o16-1B-pgt">
             <objects>
-                <viewController storyboardIdentifier="ErrorView" id="yyg-xK-N4C" customClass="ErrorView" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ErrorViewController" id="yyg-xK-N4C" customClass="ErrorViewController" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qqH-Ol-Oxz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ErrorView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaM-8a-wfF">
-                                <rect key="frame" x="102" y="158" width="210" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
-                                <nil key="textColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJ7-Mt-JNq">
+                                <rect key="frame" x="194" y="776" width="137" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="V1p-Uw-fkw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToContentStateView:" destination="yyg-xK-N4C" eventType="touchUpInside" id="wvU-aI-RXV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ErrorView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaM-8a-wfF">
+                                <rect key="frame" x="63" y="429.5" width="288" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="Wss-o8-iWk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99695819616317749" green="0.53815251588821411" blue="0.18890020251274109" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YaM-8a-wfF" firstAttribute="centerY" secondItem="qqH-Ol-Oxz" secondAttribute="centerY" id="Cjn-7S-tKh"/>
+                            <constraint firstItem="KJ7-Mt-JNq" firstAttribute="leading" secondItem="G84-Sr-3jw" secondAttribute="leading" constant="194" id="Lxp-37-jXa"/>
+                            <constraint firstItem="G84-Sr-3jw" firstAttribute="trailing" secondItem="KJ7-Mt-JNq" secondAttribute="trailing" constant="83" id="it0-MM-uh9"/>
+                            <constraint firstItem="YaM-8a-wfF" firstAttribute="centerX" secondItem="qqH-Ol-Oxz" secondAttribute="centerX" id="w0E-Xi-dIj"/>
+                            <constraint firstItem="G84-Sr-3jw" firstAttribute="bottom" secondItem="KJ7-Mt-JNq" secondAttribute="bottom" constant="50" id="wfY-Z7-ui2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G84-Sr-3jw"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="KJ7-Mt-JNq" id="P0M-75-1u0"/>
+                        <outlet property="errorMessageLabel" destination="YaM-8a-wfF" id="sKo-96-eNJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZw-he-Zl0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-303" y="25"/>
+            <point key="canvasLocation" x="-304.34782608695656" y="24.776785714285712"/>
         </scene>
-        <!--Content State View-->
+        <!--Content State View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ContentStateView" id="BYZ-38-t0r" customClass="ContentStateView" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentStateViewController" id="BYZ-38-t0r" customClass="ContentStateViewController" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,12 +70,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644.92753623188412" y="-710.49107142857144"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-717.1875"/>
         </scene>
-        <!--Map View-->
+        <!--Bus Stops View Controller-->
         <scene sceneID="eNA-cn-AK0">
             <objects>
-                <viewController storyboardIdentifier="MapView" id="B2e-kJ-lgt" customClass="MapView" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BusStopsViewController" id="B2e-kJ-lgt" customClass="BusStopsViewController" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="khz-qI-usV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,21 +86,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6h-wc-pKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="644.92753623188412" y="24.776785714285712"/>
-        </scene>
-        <!--Loading View-->
-        <scene sceneID="2qD-3n-E8n">
-            <objects>
-                <viewController storyboardIdentifier="LoadingView" id="q8A-8K-e2C" customClass="LoadingView" customModule="LondonBusTimes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KsE-KV-zgS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.14117647058823529" green="0.14901960784313725" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <viewLayoutGuide key="safeArea" id="aEd-bh-HwC"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b3d-Nb-4ZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1566.6666666666667" y="25.446428571428569"/>
         </scene>
     </scenes>
 </document>
