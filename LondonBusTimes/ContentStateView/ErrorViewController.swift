@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ErrorViewController: UIViewController {
+final class ErrorViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var errors: DataSourceError?
     

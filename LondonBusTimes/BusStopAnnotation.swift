@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class BusStopAnnotation: NSObject, MKAnnotation {
+final class BusStopAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var busDirection: String

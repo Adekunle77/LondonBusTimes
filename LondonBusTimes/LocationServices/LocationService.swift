@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class LocationService: NSObject, CLLocationManagerDelegate {
+final class LocationService: NSObject, CLLocationManagerDelegate {
 
     private var didReceiveLocation = false
     private let locationManager = CLLocationManager()

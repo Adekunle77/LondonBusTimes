@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class APIRequest: API {
+final class APIRequest: API {
     private let session: URLSession
     private let decoder: JSONDecoder
     let endPoints: Endpoints
@@ -29,7 +29,7 @@ extension APIRequest {
             .receive(on: DispatchQueue.main)
             .mapError { DataSourceError.network($0) }
             .map { $0.data }
-            .decode(type: TravellInfomation.self, decoder: decoder)
+            .decode(type: TravelInformation.self, decoder: decoder)
             .mapError { _ in DataSourceError.noData }
             .map { $0.stopPoints}
             .eraseToAnyPublisher()
@@ -37,7 +37,6 @@ extension APIRequest {
 
     func fetchBusesData(with busID: String) -> AnyPublisher<[ArrivalTime], DataSourceError> {
         let url = "https://api.tfl.gov.uk/StopPoint/\(busID)//arrivals"
- 
         guard let busIdURL = URL(string: url) else { preconditionFailure("Can't create url for query: \(busID)") }
         return session.dataTaskPublisher(for: busIdURL)
             .receive(on: DispatchQueue.main)
@@ -47,6 +46,5 @@ extension APIRequest {
             .mapError { _ in DataSourceError.noData }
             .map { $0 }
             .eraseToAnyPublisher()
-    }
-
+        }
 }

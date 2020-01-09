@@ -48,9 +48,10 @@ final class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelega
         
     func pushBusStopsViewController() {
         DispatchQueue.main.async {
-            let mapView = BusStopsViewController.instantiate()
-            self.childCoordinator.append(mapView)
-            self.navigationController.pushViewController(mapView, animated: true)
+            let busStopsViewController = BusStopsViewController.instantiate()
+            busStopsViewController.coordinator = self
+            self.childCoordinator.append(busStopsViewController)
+            self.navigationController.pushViewController(busStopsViewController, animated: true)
         }
     }
 

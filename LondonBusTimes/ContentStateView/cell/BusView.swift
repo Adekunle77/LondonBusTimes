@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusView: UIView {
+final class BusView: UIView {
     let nextBusNumber = UILabel()
     let nextBusArrivesIn = UILabel()
     let nextBusDestinations = UILabel()

@@ -9,7 +9,7 @@
 import MapKit
 import UIKit
 
-class BusStopCell: UICollectionViewCell {
+final class BusStopCell: UICollectionViewCell {
     static let reuseIdentifier: String = "cell"
     private var viewModel = BusStopCellModel()
     private var didSetupConstraints = false

@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class StopSubscriber: Subscriber {
+final class StopSubscriber: Subscriber {
     
     typealias Input = [ArrivalTime]
     typealias Failure = DataSourceError

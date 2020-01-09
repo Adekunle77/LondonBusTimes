@@ -15,8 +15,8 @@ fileprivate enum CollectionViewSection: CaseIterable {
 
 fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<CollectionViewSection, Stop>
 
-class BusStopsViewController: UIViewController, UICollectionViewDelegate {
-    var coordinator: MainCoordinator?
+final class BusStopsViewController: UIViewController, UICollectionViewDelegate {
+    weak var coordinator: MainCoordinator?
     private var viewModel: BusStopsViewModel?
     private var subscriptions = Set<AnyCancellable>()
     private var dataSource = DataSource()

@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class BusStopsSubscriber: Subscriber {
+final class BusStopsSubscriber: Subscriber {
 
     typealias Input = [BusStop]
     typealias Failure = DataSourceError

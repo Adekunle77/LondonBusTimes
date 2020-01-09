@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-class DataSource: ObservableObject {
+final class DataSource: ObservableObject {
     private let dispatchGroup = DispatchGroup()
     private var busStopSubcriber = BusStopsSubscriber()
     private var apiRequest: APIRequest?

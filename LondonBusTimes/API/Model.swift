@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TravellInfomation: Codable {
+struct TravelInformation: Codable {
     var stopPoints: [BusStop]
 }
 

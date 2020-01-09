@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusStopView: UIView {
+final class BusStopView: UIView {
     private let stopName = UILabel()
     private let fristbusNumber = UILabel()
     private let firstBusDestinations = UILabel()

@@ -12,7 +12,7 @@ import MapKit
 
 typealias mapCoordinates = (userLocation: Coordinate, stopLocation: Coordinate)
 
-class BusStopCellModel {
+final class BusStopCellModel {
     func centerMapOnLocation(location: CLLocation, mapView: MKMapView) {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         DispatchQueue.main.async {
@@ -29,64 +29,64 @@ class BusStopCellModel {
         mapView.addAnnotation(annotation)
     }
 
-    func setMapFocus(mapView: MKMapView, coordinates: mapCoordinates) {
-        let mKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: coordinates.userLocation.latitude, longitude: coordinates.userLocation.longitude), latitudinalMeters: coordinates.stopLocation.latitude, longitudinalMeters: coordinates.stopLocation.longitude)
-    }
+//    private func setMapFocus(mapView: MKMapView, coordinates: mapCoordinates) {
+//        let mKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: coordinates.userLocation.latitude, longitude: coordinates.userLocation.longitude), latitudinalMeters: coordinates.stopLocation.latitude, longitudinalMeters: coordinates.stopLocation.longitude)
+//    }
+//
+//    private func getDirections(startCoordinates: Coordinate, finishInfo: Stop, mapView: MKMapView) {
+//        let startPlacemark = self.convertCoordinates(with: startCoordinates)
+//        let finishCoordinates: Coordinate = (finishInfo.lat, finishInfo.long)
+//        let finishPlacemark = self.convertCoordinates(with: finishCoordinates)
+//        let request = MKDirections.Request()
+//        request.source = MKMapItem(placemark: startPlacemark)
+//        request.destination = MKMapItem(placemark: finishPlacemark)
+//        request.transportType = .walking
+//        request.requestsAlternateRoutes = false
+//        let direction = MKDirections(request: request)
+//
+//        direction.calculate(completionHandler: { response, error in
+//            guard let response = response else {
+//                if let error = error {}
+//                return
+//            }
+//
+//            guard let route = response.routes.first else { return }
+//            let startlocatoion = CLLocation(latitude: startCoordinates.latitude,
+//                                            longitude: startCoordinates.longitude)
+//            let finishlocatoion = CLLocation(latitude: finishCoordinates.latitude,
+//                                             longitude: finishCoordinates.longitude)
+//            let sourcePlacemark = MKPlacemark(coordinate: startlocatoion.coordinate, addressDictionary: nil)
+//            let destinationPlacemark = MKPlacemark(coordinate: finishlocatoion.coordinate, addressDictionary: nil)
+//            let sourceAnnotation = MKPointAnnotation()
+//            if let location = sourcePlacemark.location {
+//                sourceAnnotation.coordinate = location.coordinate
+//            }
+//            let destinationAnnotation = MKPointAnnotation()
+//            if let location = destinationPlacemark.location {
+//                destinationAnnotation.coordinate = location.coordinate
+//            }
+//            mapView.addAnnotation(destinationAnnotation)
+//            mapView.showsBuildings = true
+//            mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50), animated: false)
+//        })
+//    }
 
-    func getDirections(startCoordinates: Coordinate, finishInfo: Stop, mapView: MKMapView) {
-        let startPlacemark = self.convertCoordinates(with: startCoordinates)
-        let finishCoordinates: Coordinate = (finishInfo.lat, finishInfo.long)
-        let finishPlacemark = self.convertCoordinates(with: finishCoordinates)
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: startPlacemark)
-        request.destination = MKMapItem(placemark: finishPlacemark)
-        request.transportType = .walking
-        request.requestsAlternateRoutes = false
-        let direction = MKDirections(request: request)
-
-        direction.calculate(completionHandler: { response, error in
-            guard let response = response else {
-                if let error = error {}
-                return
-            }
-
-            guard let route = response.routes.first else { return }
-            let startlocatoion = CLLocation(latitude: startCoordinates.latitude,
-                                            longitude: startCoordinates.longitude)
-            let finishlocatoion = CLLocation(latitude: finishCoordinates.latitude,
-                                             longitude: finishCoordinates.longitude)
-            let sourcePlacemark = MKPlacemark(coordinate: startlocatoion.coordinate, addressDictionary: nil)
-            let destinationPlacemark = MKPlacemark(coordinate: finishlocatoion.coordinate, addressDictionary: nil)
-            let sourceAnnotation = MKPointAnnotation()
-            if let location = sourcePlacemark.location {
-                sourceAnnotation.coordinate = location.coordinate
-            }
-            let destinationAnnotation = MKPointAnnotation()
-            if let location = destinationPlacemark.location {
-                destinationAnnotation.coordinate = location.coordinate
-            }
-            mapView.addAnnotation(destinationAnnotation)
-            mapView.showsBuildings = true
-            mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50), animated: false)
-        })
-    }
-
-    func createDirectionRequest(startCoordinates: Coordinate, finishCoordinates: Coordinate) -> MKDirections.Request {
-        let startPlacemark = self.convertCoordinates(with: startCoordinates)
-        let finishPlacemark = self.convertCoordinates(with: finishCoordinates)
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: startPlacemark)
-        request.destination = MKMapItem(placemark: finishPlacemark)
-        request.transportType = .walking
-        request.requestsAlternateRoutes = false
-        return request
-    }
-
-    private func convertCoordinates(with coordinates: Coordinate) -> MKPlacemark {
-        let latitude = CLLocationDegrees(coordinates.latitude)
-        let longitude = CLLocationDegrees(coordinates.longitude)
-        let location = CLLocation(latitude: latitude, longitude: longitude).coordinate
-        let placemark = MKPlacemark(coordinate: location)
-        return placemark
-    }
+//    func createDirectionRequest(startCoordinates: Coordinate, finishCoordinates: Coordinate) -> MKDirections.Request {
+//        let startPlacemark = self.convertCoordinates(with: startCoordinates)
+//        let finishPlacemark = self.convertCoordinates(with: finishCoordinates)
+//        let request = MKDirections.Request()
+//        request.source = MKMapItem(placemark: startPlacemark)
+//        request.destination = MKMapItem(placemark: finishPlacemark)
+//        request.transportType = .walking
+//        request.requestsAlternateRoutes = false
+//        return request
+//    }
+//
+//    private func convertCoordinates(with coordinates: Coordinate) -> MKPlacemark {
+//        let latitude = CLLocationDegrees(coordinates.latitude)
+//        let longitude = CLLocationDegrees(coordinates.longitude)
+//        let location = CLLocation(latitude: latitude, longitude: longitude).coordinate
+//        let placemark = MKPlacemark(coordinate: location)
+//        return placemark
+//    }
 }

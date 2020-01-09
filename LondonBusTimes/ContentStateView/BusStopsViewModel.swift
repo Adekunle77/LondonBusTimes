@@ -14,7 +14,7 @@ protocol MapViewModelDelegate: class {
     func didUpdateWithData(with stops: [ArrivalTime])
 }
 
-class BusStopsViewModel {
+final class BusStopsViewModel {
     private var locationService: LocationService?
     weak var delegate: MapViewModelDelegate?
 
@@ -61,19 +61,6 @@ class BusStopsViewModel {
             earliestBuses.append(stop)
         }
         return earliestBuses
-    }
-
-    func mapSetup(view: MKMapView) {
-        view.showsUserLocation = true
-        guard let coordinates = locationService?.currentCoordinate else { return }
-        let location = CLLocation(
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude)
-        let region = MKCoordinateRegion(
-            center: location.coordinate,
-            latitudinalMeters: 500,
-            longitudinalMeters: 500)
-        view.setRegion(region, animated: true)
     }
 }
 
