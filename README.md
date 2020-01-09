@@ -1,4 +1,4 @@
-![Group 3@3x](https://user-images.githubusercontent.com/14952997/72066784-5dba3d80-32d9-11ea-9daf-d8012b2009a4.png)
+<img width="183" alt="Screenshot 2020-01-09 12 16 58" src="https://user-images.githubusercontent.com/14952997/72067287-40d23a00-32da-11ea-8b3b-9af6e72745c0.png">
 # LondonBusTimes
 London Bus Times is a app that gets buses infomation in the London area. 
 
