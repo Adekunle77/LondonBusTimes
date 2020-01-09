@@ -36,15 +36,18 @@ extension APIRequest {
     }
 
     func fetchBusesData(with busID: String) -> AnyPublisher<[ArrivalTime], DataSourceError> {
-        let url = "https://api.tfl.gov.uk/StopPoint/\(busID)//arrivals"
-        guard let busIdURL = URL(string: url) else { preconditionFailure("Can't create url for query: \(busID)") }
-        return session.dataTaskPublisher(for: busIdURL)
-            .receive(on: DispatchQueue.main)
-            .mapError { DataSourceError.network($0) }
-            .map { $0.data }
-            .decode(type: [ArrivalTime].self, decoder: decoder)
-            .mapError { _ in DataSourceError.noData }
-            .map { $0 }
-            .eraseToAnyPublisher()
-        }
+         let url = "https://api.tfl.gov.uk/StopPoint/\(busID)//arrivals"
+         guard let busIdURL = URL(string: url) else { preconditionFailure("Can't create url for query: \(busID)") }
+          return Timer.publish(every: 60, on: .main, in: .default)
+             .autoconnect()
+             .setFailureType(to: URLError.self)
+             .flatMap { _ in self.session.dataTaskPublisher(for: busIdURL) }
+             .receive(on: DispatchQueue.main)
+             .mapError { DataSourceError.network($0) }
+             .map { $0.data }
+             .decode(type: [ArrivalTime].self, decoder: decoder)
+             .mapError { _ in DataSourceError.noData }
+             .map { $0 }
+             .eraseToAnyPublisher()
+     }
 }
