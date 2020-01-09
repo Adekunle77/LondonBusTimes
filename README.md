@@ -8,7 +8,7 @@ I enjoy walking long distances in London, and occasionally I find myself in unfa
 The London Bus Times app is really easy to use. The user just opens the app and it will display all the local bus stops around the user's current location. At also supplies the buses that arrives to each stop and the times too. 
 
 
-<img width="385" alt="Screenshot 2020-01-09 11 30 49" src="https://user-images.githubusercontent.com/14952997/72066650-0fa53a00-32d9-11ea-88ff-9fc143fc225e.png">
+<img width="285" alt="Screenshot 2020-01-09 11 30 49" src="https://user-images.githubusercontent.com/14952997/72066650-0fa53a00-32d9-11ea-88ff-9fc143fc225e.png">
 
 
 ## Development
