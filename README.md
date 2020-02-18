@@ -1,7 +1,7 @@
 <img width="183" alt="Screenshot 2020-01-09 12 16 58" src="https://user-images.githubusercontent.com/14952997/72067287-40d23a00-32da-11ea-8b3b-9af6e72745c0.png">
 
 # London Bus Times
-London Bus Times is a app that gets buses infomation in the London area. 
+The London Bus Times app provides the user with information for London buses. 
 
 ## London Bus Times
 I enjoy walking long distances in London, and occasionally I find myself in unfamilar areas and I always need to know where the nearest bus stop is, what buses will arrive to the bus stop, and how long they would take. 
