@@ -12,7 +12,7 @@ The London Bus Times app is really easy to use. The user just opens the app and 
 
 
 ## Development
-Development of this app requires the use of Transport for London API. The Transport for London's API provides the app with the location of each bus stop, bus number and the arrival time. This information is retrieved in a JSON format. The Combine Framework is used to process the changes of the bus's arrival times. The Timer publish is used to trigger an API request to get the updated bus arrival time. This happens every 60 seconds. The t retrieved data is displayed on an UICollectionView. In each UICollectionViewCell has information for each bus stop. Also, an MKMapView is used in each cell to show where each bus stop is around the user. CocoaPods is installed in the app to use a Lottie, a 3rd party Library for animation.
+Development of this app requires the use of Transport for London API. The Transport for London's API provides the app with the location of each bus stop, bus number and the arrival time. This information is retrieved in a JSON format. The Combine Framework is used to process the changes of the bus's arrival times. The Timer publish is used to trigger an API request to get the updated bus arrival time. This happens every 60 seconds. The retrieved data is displayed on a UICollectionView. Each UICollectionViewCell has information for each bus stop. Also, an MKMapView is used in each cell to show where each bus stop is around the user. CocoaPods is installed in the app to use a Lottie, a 3rd party Library for animation.
 
 
 ## Requirements 
